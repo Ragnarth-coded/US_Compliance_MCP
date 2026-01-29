@@ -5,6 +5,8 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import Database from 'better-sqlite3';
 import { searchRegulations, SearchInput } from './search.js';
+import { getSection, GetSectionInput } from './section.js';
+import { listRegulations, ListInput } from './list.js';
 
 export interface ToolDefinition {
   name: string;
@@ -43,6 +45,43 @@ export const TOOLS: ToolDefinition[] = [
     },
     handler: async (db: Database.Database, args: any) => {
       return await searchRegulations(db, args as SearchInput);
+    },
+  },
+  {
+    name: 'get_section',
+    description: 'Retrieve the full text of a specific regulation section. Returns section content, metadata, and cross-references. Large sections are automatically truncated with a warning.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        regulation: {
+          type: 'string',
+          description: 'Regulation ID (e.g., "HIPAA", "CCPA")',
+        },
+        section: {
+          type: 'string',
+          description: 'Section number (e.g., "164.502", "1798.100")',
+        },
+      },
+      required: ['regulation', 'section'],
+    },
+    handler: async (db: Database.Database, args: any) => {
+      return await getSection(db, args as GetSectionInput);
+    },
+  },
+  {
+    name: 'list_regulations',
+    description: 'List all available regulations or get the structure of a specific regulation. Without parameters, returns all regulations with metadata. With a regulation ID, returns chapters and sections organized hierarchically.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        regulation: {
+          type: 'string',
+          description: 'Optional: Regulation ID to get detailed structure for (e.g., "HIPAA")',
+        },
+      },
+    },
+    handler: async (db: Database.Database, args: any) => {
+      return await listRegulations(db, args as ListInput);
     },
   },
 ];
