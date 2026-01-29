@@ -114,14 +114,11 @@ export async function searchRegulations(
       relevance: number;
     }>;
 
-    // Convert relevance to absolute value and sort
-    const results = sectionRows
-      .map(row => ({
-        ...row,
-        relevance: Math.abs(row.relevance),
-      }))
-      .sort((a, b) => b.relevance - a.relevance)
-      .slice(0, limit);
+    // BM25 returns negative scores; convert to positive for clarity
+    const results = sectionRows.map(row => ({
+      ...row,
+      relevance: Math.abs(row.relevance),
+    }));
 
     return results;
   } catch (error) {
