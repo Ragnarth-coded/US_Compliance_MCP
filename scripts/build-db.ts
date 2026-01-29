@@ -26,7 +26,9 @@ CREATE TABLE IF NOT EXISTS regulations (
   citation TEXT NOT NULL,
   effective_date TEXT,
   last_amended TEXT,
-  source_url TEXT
+  source_url TEXT,
+  jurisdiction TEXT,
+  regulation_type TEXT
 );
 
 -- Sections table (equivalent to articles in EU regulations)
@@ -38,6 +40,8 @@ CREATE TABLE IF NOT EXISTS sections (
   text TEXT NOT NULL,
   part TEXT,
   subpart TEXT,
+  chapter TEXT,
+  parent_section TEXT,
   cross_references TEXT,
   UNIQUE(regulation, section_number)
 );
@@ -107,8 +111,9 @@ CREATE TABLE IF NOT EXISTS applicability_rules (
 -- Source registry for tracking data quality
 CREATE TABLE IF NOT EXISTS source_registry (
   regulation TEXT PRIMARY KEY REFERENCES regulations(id),
-  citation TEXT NOT NULL,
-  source_version TEXT,
+  source_type TEXT NOT NULL,
+  source_url TEXT NOT NULL,
+  api_endpoint TEXT,
   last_fetched TEXT,
   sections_expected INTEGER,
   sections_parsed INTEGER,
@@ -124,12 +129,16 @@ interface RegulationSeed {
   citation: string;
   effective_date?: string;
   source_url?: string;
+  jurisdiction?: string;
+  regulation_type?: string;
   sections: Array<{
     number: string;
     title?: string;
     text: string;
     part?: string;
     subpart?: string;
+    chapter?: string;
+    parent_section?: string;
     cross_references?: string[];
   }>;
   definitions?: Array<{
@@ -174,21 +183,23 @@ function buildDatabase() {
 
       // Insert regulation
       db.prepare(`
-        INSERT INTO regulations (id, full_name, short_name, citation, effective_date, source_url)
-        VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO regulations (id, full_name, short_name, citation, effective_date, source_url, jurisdiction, regulation_type)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
       `).run(
         regulation.id,
         regulation.full_name,
         regulation.short_name || null,
         regulation.citation,
         regulation.effective_date || null,
-        regulation.source_url || null
+        regulation.source_url || null,
+        regulation.jurisdiction || null,
+        regulation.regulation_type || null
       );
 
       // Insert sections
       const insertSection = db.prepare(`
-        INSERT INTO sections (regulation, section_number, title, text, part, subpart, cross_references)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO sections (regulation, section_number, title, text, part, subpart, chapter, parent_section, cross_references)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
       `);
 
       for (const section of regulation.sections) {
@@ -199,6 +210,8 @@ function buildDatabase() {
           section.text,
           section.part || null,
           section.subpart || null,
+          section.chapter || null,
+          section.parent_section || null,
           section.cross_references ? JSON.stringify(section.cross_references) : null
         );
       }
@@ -217,11 +230,19 @@ function buildDatabase() {
 
       // Update source registry with timestamps
       const now = new Date().toISOString();
-      const sourceVersion = regulation.effective_date || now.split('T')[0];
+      const sourceType = regulation.source_url?.includes('api') ? 'api' : regulation.source_url?.includes('.pdf') ? 'pdf' : 'html';
       db.prepare(`
-        INSERT INTO source_registry (regulation, citation, source_version, last_fetched, sections_expected, sections_parsed, quality_status)
-        VALUES (?, ?, ?, ?, ?, ?, 'complete')
-      `).run(regulation.id, regulation.citation, sourceVersion, now, regulation.sections.length, regulation.sections.length);
+        INSERT INTO source_registry (regulation, source_type, source_url, api_endpoint, last_fetched, sections_expected, sections_parsed, quality_status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 'complete')
+      `).run(
+        regulation.id,
+        sourceType,
+        regulation.source_url || '',
+        regulation.source_url?.includes('api') ? regulation.source_url : null,
+        now,
+        regulation.sections.length,
+        regulation.sections.length
+      );
 
       console.log(`  Loaded ${regulation.sections.length} sections, ${regulation.definitions?.length || 0} definitions`);
     }
