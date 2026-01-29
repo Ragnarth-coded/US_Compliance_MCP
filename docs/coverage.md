@@ -23,20 +23,20 @@ The v1.2 release includes fourteen US regulations:
 |------------|----------|--------|----------|
 | HIPAA | 45 CFR 160, 162, 164 | ✅ Production | 143 |
 | CCPA/CPRA | Cal. Civ. Code §1798.100-199 | ✅ Production | 23 |
-| SOX | 17 CFR 229, 240 | ✅ Production | 5 |
+| SOX | 17 CFR 229, 240 | ✅ Production | 15 |
 | GLBA | 16 CFR 314 | ✅ Production (v1.1) | 6 |
 | FERPA | 34 CFR 99 | ✅ Production (v1.1) | 31 |
 | COPPA | 16 CFR 312 | ✅ Production (v1.1) | 13 |
 | FDA 21 CFR 11 | 21 CFR 11 | ✅ Production (v1.1) | 10 |
 | EPA RMP | 40 CFR 68 | ✅ Production (v1.1) | 63 |
-| FFIEC | IT Examination Handbook | ✅ Production (v1.1) | 10 |
-| NYDFS 500 | 23 NYCRR 500 | ✅ Production (v1.1) | 16 |
+| FFIEC | IT Examination Handbook | ✅ Production (v1.1) | 14 |
+| NYDFS 500 | 23 NYCRR 500 | ✅ Production (v1.1) | 17 |
 | Virginia CDPA | Va. Code Ann. §59.1-575 to 59.1-585 | ✅ Production (v1.2) | 10 |
 | Colorado CPA | C.R.S. §6-1-1301 to 6-1-1313 | ✅ Production (v1.2) | 13 |
 | Connecticut CTDPA | Conn. Gen. Stat. §42-515 to 42-524 | ✅ Production (v1.2) | 12 |
 | Utah UCPA | Utah Code Ann. §13-61-101 to 13-61-404 | ✅ Production (v1.2) | 14 |
 
-**Total**: 369 sections across 14 regulations
+**Total**: 384 sections across 14 regulations
 
 ### HIPAA - Health Insurance Portability and Accountability Act
 

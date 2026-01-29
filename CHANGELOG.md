@@ -37,7 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Compare enforcement approaches and cure periods
 
 ### Changed
-- Total coverage increased from 320 to 369 sections (+15%)
+- Total coverage increased from 320 to 384 sections (+20%)
 - State privacy law representation now covers 5 of top 10 US states by population
 - Enhanced test suite with 4 new state privacy adapter tests
 
@@ -49,7 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Performance
 - Regulation coverage increased 40% (10 → 14 regulations)
 - Geographic coverage: Federal + 6 states (CA, NY, VA, CO, CT, UT)
-- Section count increased 15% (320 → 369 sections)
+- Section count increased 20% (320 → 384 sections)
 
 ## [1.1.0] - 2026-01-29
 
