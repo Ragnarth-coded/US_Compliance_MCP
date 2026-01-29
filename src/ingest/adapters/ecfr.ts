@@ -187,8 +187,11 @@ export class EcfrAdapter implements SourceAdapter {
     // Extract title (HEAD)
     const title = div.HEAD ? this.extractText(div.HEAD) : undefined;
 
-    // Build section number (e.g., "164.308")
-    const fullSectionNum = `${partNum}.${sectionNum}`;
+    // Build section number - eCFR @_N already includes part number (e.g., "164.308")
+    // Don't prepend if section already starts with part number
+    const fullSectionNum = sectionNum.startsWith(`${partNum}.`)
+      ? sectionNum
+      : `${partNum}.${sectionNum}`;
 
     // Extract cross-references (CITA tags)
     const crossReferences = this.extractCrossReferences(div);

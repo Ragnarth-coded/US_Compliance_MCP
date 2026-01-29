@@ -12,6 +12,7 @@
     "dev": "tsx src/index.ts",
     "build:db": "tsx scripts/build-db.ts",
     "ingest": "tsx scripts/ingest.ts",
+    "load-seed": "tsx scripts/load-seed-data.ts",
     "test": "vitest run"
   },
   "keywords": [

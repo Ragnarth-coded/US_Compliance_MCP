@@ -93,7 +93,10 @@ CREATE TABLE IF NOT EXISTS control_mappings (
   regulation TEXT NOT NULL REFERENCES regulations(id),
   sections TEXT NOT NULL,
   coverage TEXT CHECK(coverage IN ('full', 'partial', 'related')),
-  notes TEXT
+  notes TEXT,
+  confidence INTEGER,
+  generated_by TEXT,
+  UNIQUE(framework, control_id, regulation, sections)
 );
 
 -- Applicability rules (which sectors/industries each regulation applies to)
@@ -105,7 +108,9 @@ CREATE TABLE IF NOT EXISTS applicability_rules (
   applies INTEGER NOT NULL,
   confidence TEXT CHECK(confidence IN ('definite', 'likely', 'possible')),
   basis_section TEXT,
-  notes TEXT
+  notes TEXT,
+  rationale TEXT,
+  UNIQUE(regulation, sector, subsector)
 );
 
 -- Source registry for tracking data quality
@@ -247,77 +252,9 @@ function buildDatabase() {
       console.log(`  Loaded ${regulation.sections.length} sections, ${regulation.definitions?.length || 0} definitions`);
     }
 
-    // Load mappings
-    const mappingsDir = join(SEED_DIR, 'mappings');
-    if (existsSync(mappingsDir)) {
-      const mappingFiles = readdirSync(mappingsDir).filter((f: string) => f.endsWith('.json'));
-
-      for (const file of mappingFiles) {
-        console.log(`Loading mappings from ${file}...`);
-        const content = readFileSync(join(mappingsDir, file), 'utf-8');
-        const mappings = JSON.parse(content);
-
-        // Detect framework from filename
-        let framework = 'NIST_CSF';
-        if (file.startsWith('nist-csf-')) {
-          framework = 'NIST_CSF';
-        } else if (file.startsWith('iso27001-')) {
-          framework = 'ISO27001';
-        } else if (file.startsWith('nist-800-53-')) {
-          framework = 'NIST_800_53';
-        }
-
-        const insertMapping = db.prepare(`
-          INSERT INTO control_mappings (framework, control_id, control_name, regulation, sections, coverage, notes)
-          VALUES (?, ?, ?, ?, ?, ?, ?)
-        `);
-
-        for (const mapping of mappings) {
-          insertMapping.run(
-            framework,
-            mapping.control_id,
-            mapping.control_name,
-            mapping.regulation,
-            JSON.stringify(mapping.sections),
-            mapping.coverage,
-            mapping.notes || null
-          );
-        }
-
-        console.log(`  Loaded ${mappings.length} ${framework} control mappings`);
-      }
-    }
-
-    // Load applicability rules
-    const applicabilityDir = join(SEED_DIR, 'applicability');
-    if (existsSync(applicabilityDir)) {
-      const applicabilityFiles = readdirSync(applicabilityDir).filter((f: string) => f.endsWith('.json'));
-
-      const insertApplicability = db.prepare(`
-        INSERT INTO applicability_rules (regulation, sector, subsector, applies, confidence, basis_section, notes)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-      `);
-
-      for (const file of applicabilityFiles) {
-        console.log(`Loading applicability rules from ${file}...`);
-        const content = readFileSync(join(applicabilityDir, file), 'utf-8');
-        const rules = JSON.parse(content);
-
-        for (const rule of rules) {
-          insertApplicability.run(
-            rule.regulation,
-            rule.sector,
-            rule.subsector || null,
-            rule.applies ? 1 : 0,
-            rule.confidence,
-            rule.basis_section || null,
-            rule.notes || null
-          );
-        }
-
-        console.log(`  Loaded ${rules.length} applicability rules`);
-      }
-    }
+    // Note: Control mappings and applicability rules are loaded separately
+    // using scripts/load-seed-data.ts after data ingestion
+    console.log('\nNote: Run "npm run load-seed" to load control mappings and applicability rules');
   } else {
     console.log('No seed directory found. Database created with empty tables.');
     console.log(`Create seed files in: ${SEED_DIR}`);
