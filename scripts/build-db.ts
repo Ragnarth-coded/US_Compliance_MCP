@@ -46,14 +46,15 @@ CREATE TABLE IF NOT EXISTS sections (
   UNIQUE(regulation, section_number)
 );
 
--- FTS5 virtual table for full-text search
+-- FTS5 virtual table for full-text search with Porter stemming
 CREATE VIRTUAL TABLE IF NOT EXISTS sections_fts USING fts5(
   regulation,
   section_number,
   title,
   text,
   content='sections',
-  content_rowid='rowid'
+  content_rowid='rowid',
+  tokenize='porter unicode61'
 );
 
 -- FTS5 triggers

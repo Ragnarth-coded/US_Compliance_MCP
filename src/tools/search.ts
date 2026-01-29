@@ -41,9 +41,10 @@ function escapeFts5Query(query: string): string {
   }
 
   if (words.length <= 3) {
-    // Short queries: Use AND logic with exact matching for precision
-    // Example: "incident reporting" → "incident" "reporting"
-    return words.map(word => `"${word}"`).join(' ');
+    // Short queries: Use AND logic with prefix matching for precision
+    // Example: "incident reporting" → incident* reporting*
+    // Prefix matching handles word variations (encrypt vs encryption)
+    return words.map(word => `${word}*`).join(' ');
   } else {
     // Long queries: Use OR logic with prefix matching for better recall
     // Example: "incident reporting notification timeline" → incident* OR reporting* OR notification* OR timeline*
