@@ -63,7 +63,7 @@ export async function checkApplicability(
     regulation: string;
     sector: string;
     subsector: string | null;
-    applies: number;
+    applies: number; // Database stores as INTEGER (0 or 1)
     confidence: 'definite' | 'likely' | 'possible';
     basis_section: string | null;
     notes: string | null;
@@ -76,7 +76,7 @@ export async function checkApplicability(
       regulation: row.regulation,
       sector: row.sector,
       subsector: row.subsector,
-      applies: true,
+      applies: row.applies === 1,
       confidence: row.confidence,
       basis_section: row.basis_section,
       notes: row.notes,

@@ -18,6 +18,10 @@ export interface DefinitionsResult {
   total_definitions: number;
 }
 
+function escapeSqlLike(str: string): string {
+  return str.replace(/[%_]/g, '\\$&');
+}
+
 /**
  * Look up official term definitions across regulations.
  * Uses LIKE search to match partial terms (e.g., "health" matches "protected health information").
@@ -44,7 +48,7 @@ export async function getDefinitions(
   `;
 
   // Use LIKE for partial matching (case-insensitive)
-  const params: string[] = [`%${term}%`];
+  const params: string[] = [`%${escapeSqlLike(term)}%`];
 
   if (regulation) {
     sql += ' AND regulation = ?';
