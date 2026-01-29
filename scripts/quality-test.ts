@@ -157,6 +157,67 @@ addTest('SOX', 'Financial records retention', async () => {
   return result;
 });
 
+// ===== v1.1 FINANCIAL SERVICES & SECTOR-SPECIFIC QUERIES =====
+addTest('GLBA', 'GLBA Safeguards Rule', async () => {
+  const result = await searchRegulations(db, {
+    query: 'safeguards rule financial institution customer data',
+    regulation: 'GLBA',
+    limit: 5
+  });
+  if (!result || result.length === 0) throw new Error('No results');
+  console.log(`   📋 Found ${result.length} sections`);
+  console.log(`   📝 Top result: ${result[0].section}`);
+  return result;
+});
+
+addTest('FERPA', 'FERPA student records', async () => {
+  const result = await searchRegulations(db, {
+    query: 'student education records privacy parental consent',
+    regulation: 'FERPA',
+    limit: 5
+  });
+  if (!result || result.length === 0) throw new Error('No results');
+  console.log(`   📋 Found ${result.length} sections`);
+  console.log(`   📝 Top result: ${result[0].section}`);
+  return result;
+});
+
+addTest('COPPA', 'COPPA children privacy', async () => {
+  const result = await searchRegulations(db, {
+    query: 'children under 13 online privacy parental consent',
+    regulation: 'COPPA',
+    limit: 5
+  });
+  if (!result || result.length === 0) throw new Error('No results');
+  console.log(`   📋 Found ${result.length} sections`);
+  console.log(`   📝 Top result: ${result[0].section}`);
+  return result;
+});
+
+addTest('FDA 21 CFR Part 11', 'FDA 21 CFR Part 11', async () => {
+  const result = await searchRegulations(db, {
+    query: 'electronic signatures records FDA pharmaceutical',
+    regulation: 'FDA_CFR_11',
+    limit: 5
+  });
+  if (!result || result.length === 0) throw new Error('No results');
+  console.log(`   📋 Found ${result.length} sections`);
+  console.log(`   📝 Top result: ${result[0].section}`);
+  return result;
+});
+
+addTest('EPA RMP', 'EPA RMP chemical safety', async () => {
+  const result = await searchRegulations(db, {
+    query: 'chemical facility risk management plan EPA',
+    regulation: 'EPA_RMP',
+    limit: 5
+  });
+  if (!result || result.length === 0) throw new Error('No results');
+  console.log(`   📋 Found ${result.length} sections`);
+  console.log(`   📝 Top result: ${result[0].section}`);
+  return result;
+});
+
 // ===== CROSS-REGULATION QUERIES =====
 addTest('Cross-Regulation', 'Compare breach notification timelines', async () => {
   const result = await compareRequirements(db, {
