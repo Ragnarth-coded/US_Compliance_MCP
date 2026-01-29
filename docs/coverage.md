@@ -17,20 +17,22 @@ This document details the current regulation coverage, planned expansions, contr
 
 ## MVP Regulations
 
-The v1.1 release includes eight US regulations:
+The v1.1 release includes ten US regulations:
 
 | Regulation | Citation | Status | Sections |
 |------------|----------|--------|----------|
-| HIPAA | 45 CFR 160, 162, 164 | ✅ Production | ~143 |
-| CCPA/CPRA | Cal. Civ. Code §1798.100-199 | ✅ Production | ~23 |
-| SOX | 17 CFR 229, 240 | ✅ Production | ~5 |
-| GLBA | 16 CFR 314 | ✅ Production (v1.1) | ~6 |
-| FERPA | 34 CFR 99 | ✅ Production (v1.1) | ~31 |
-| COPPA | 16 CFR 312 | ✅ Production (v1.1) | ~13 |
-| FDA 21 CFR 11 | 21 CFR 11 | ✅ Production (v1.1) | ~10 |
-| EPA RMP | 40 CFR 68 | ✅ Production (v1.1) | ~63 |
+| HIPAA | 45 CFR 160, 162, 164 | ✅ Production | 143 |
+| CCPA/CPRA | Cal. Civ. Code §1798.100-199 | ✅ Production | 23 |
+| SOX | 17 CFR 229, 240 | ✅ Production | 5 |
+| GLBA | 16 CFR 314 | ✅ Production (v1.1) | 6 |
+| FERPA | 34 CFR 99 | ✅ Production (v1.1) | 31 |
+| COPPA | 16 CFR 312 | ✅ Production (v1.1) | 13 |
+| FDA 21 CFR 11 | 21 CFR 11 | ✅ Production (v1.1) | 10 |
+| EPA RMP | 40 CFR 68 | ✅ Production (v1.1) | 63 |
+| FFIEC | IT Examination Handbook | ✅ Production (v1.1) | 10 |
+| NYDFS 500 | 23 NYCRR 500 | ✅ Production (v1.1) | 16 |
 
-**Total**: ~294 sections across 8 regulations
+**Total**: 320 sections across 10 regulations
 
 ### HIPAA - Health Insurance Portability and Accountability Act
 
@@ -320,6 +322,76 @@ The v1.1 release includes eight US regulations:
 - Facilities storing threshold quantities of toxic, flammable, or explosive substances
 
 **Data Source**: ecfr.gov API
+
+---
+
+### FFIEC - IT Examination Handbook
+
+**Status**: Production (v1.1.0)
+
+**Citation**: FFIEC IT Examination Handbook
+
+**Jurisdiction**: Federal (applies to financial institutions)
+
+**Effective Date**: Various (continuously updated)
+
+**Coverage**:
+- Architecture and Infrastructure
+- Information Security
+- Operations
+- Audit and Compliance
+- Business Continuity Planning
+- Cybersecurity
+- Development and Acquisition
+- Outsourcing Technology Services
+- Retail Payment Systems
+- Wholesale Payment Systems
+
+**Applicability**:
+- Banks and credit unions
+- Financial service providers
+- Third-party service providers to financial institutions
+- Organizations subject to federal financial regulatory oversight
+
+**Data Source**: Seed data (data/seed/ffiec.json)
+
+---
+
+### NYDFS 500 - NY DFS Cybersecurity Regulation
+
+**Status**: Production (v1.1.0)
+
+**Citation**: 23 NYCRR 500
+
+**Jurisdiction**: State (New York)
+
+**Effective Date**: March 1, 2017
+
+**Last Major Amendment**: November 1, 2023
+
+**Coverage**:
+- Cybersecurity Program (500.02)
+- Cybersecurity Policy (500.03)
+- Chief Information Security Officer (500.04)
+- Penetration Testing and Vulnerability Assessments (500.05)
+- Audit Trail (500.06)
+- Access Privileges (500.07)
+- Application Security (500.08)
+- Risk Assessment (500.09)
+- Cybersecurity Personnel and Intelligence (500.10)
+- Third Party Service Provider Security Policy (500.11)
+- Multi-Factor Authentication (500.12)
+- Limitations on Data Retention (500.13)
+- Training and Monitoring (500.14)
+- Encryption of Nonpublic Information (500.15)
+- Incident Response Plan (500.16)
+- Notices to Superintendent (500.17)
+
+**Applicability**:
+- Banks, insurance companies, and other financial services institutions
+- Entities operating under or required to operate under a license, registration, charter, certificate, permit, accreditation, or similar authorization under the Banking Law, the Insurance Law, or the Financial Services Law
+
+**Data Source**: Seed data (data/seed/nydfs.json)
 
 ---
 
