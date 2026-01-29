@@ -1,0 +1,72 @@
+{
+  "regulation": {
+    "id": "FFIEC",
+    "full_name": "FFIEC IT Examination Handbook",
+    "citation": "FFIEC Interagency Guidelines",
+    "effective_date": "2023-01-01",
+    "jurisdiction": "federal",
+    "regulation_type": "guidance"
+  },
+  "sections": [
+    {
+      "sectionNumber": "ARCH-1",
+      "title": "Architecture and Infrastructure - Overview",
+      "text": "Financial institutions should implement a secure, resilient IT architecture that supports business operations and protects customer information. The architecture should address network segmentation, access controls, and defense-in-depth principles.",
+      "chapter": "Architecture"
+    },
+    {
+      "sectionNumber": "ISG-1",
+      "title": "Information Security - Governance",
+      "text": "The board of directors and senior management are responsible for information security governance. They should establish an information security program that addresses risks, compliance requirements, and incident response.",
+      "chapter": "InfoSec"
+    },
+    {
+      "sectionNumber": "OPS-1",
+      "title": "Operations - IT Operations Management",
+      "text": "Financial institutions should maintain effective IT operations management including change management, problem management, and service continuity. Operations should be monitored, measured, and continuously improved.",
+      "chapter": "Operations"
+    },
+    {
+      "sectionNumber": "AUDIT-1",
+      "title": "Audit and Compliance",
+      "text": "Financial institutions should maintain an audit program that provides independent assessment of IT controls, risk management processes, and compliance with applicable laws and regulations. Audit findings should be tracked and remediated.",
+      "chapter": "Audit"
+    },
+    {
+      "sectionNumber": "BCP-1",
+      "title": "Business Continuity Planning",
+      "text": "Financial institutions should develop and maintain business continuity plans that address service disruptions, disaster recovery, and resilience. Plans should be tested regularly and updated based on test results and changing business needs.",
+      "chapter": "Business Continuity"
+    },
+    {
+      "sectionNumber": "CYBER-1",
+      "title": "Cybersecurity Assessment",
+      "text": "Financial institutions should conduct regular cybersecurity assessments to identify vulnerabilities, evaluate controls, and measure preparedness. Assessments should cover people, processes, and technology across the organization.",
+      "chapter": "Cybersecurity"
+    },
+    {
+      "sectionNumber": "DEV-1",
+      "title": "Development and Acquisition",
+      "text": "Financial institutions should implement secure software development lifecycle practices for internally developed systems and conduct thorough due diligence when acquiring third-party solutions. Security and privacy requirements should be integrated throughout development and acquisition processes.",
+      "chapter": "Development"
+    },
+    {
+      "sectionNumber": "OUTSOURCE-1",
+      "title": "Outsourcing Technology Services",
+      "text": "Financial institutions should implement risk management programs for outsourced technology services. This includes due diligence, contract provisions, ongoing monitoring, and contingency planning for service provider relationships.",
+      "chapter": "Outsourcing"
+    },
+    {
+      "sectionNumber": "RETAIL-1",
+      "title": "Retail Payment Systems",
+      "text": "Financial institutions should implement controls to protect retail payment systems including authentication, transaction monitoring, and fraud detection. Controls should address card-based payments, ACH, wire transfers, and emerging payment methods.",
+      "chapter": "Retail Payments"
+    },
+    {
+      "sectionNumber": "WHOLESALE-1",
+      "title": "Wholesale Payment Systems",
+      "text": "Financial institutions should implement enhanced security controls for wholesale payment systems given the higher transaction values and fraud risks. Controls should include dual authorization, out-of-band verification, and anomaly detection.",
+      "chapter": "Wholesale Payments"
+    }
+  ]
+}

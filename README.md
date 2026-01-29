@@ -8,7 +8,7 @@
 [![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org/)
 
-Query **HIPAA, CCPA, and SOX** — with more US regulations coming soon — directly from Claude, Cursor, or any MCP-compatible client.
+Query **HIPAA, CCPA, SOX, GLBA, FERPA, COPPA, FDA 21 CFR Part 11, EPA RMP, FFIEC, and NYDFS 500** directly from Claude, Cursor, or any MCP-compatible client.
 
 If you're building healthcare tech, consumer apps, or financial services for the US market, this is your compliance reference.
 
@@ -98,6 +98,16 @@ Once connected, just ask naturally:
 ### Financial Services & GLBA
 - *"What are the GLBA safeguards rule requirements for customer data protection?"*
 - *"Compare encryption requirements across HIPAA, GLBA, and SOX"*
+
+### Banking & FFIEC
+- *"What are the FFIEC guidelines for information security governance?"*
+- *"What does FFIEC require for business continuity planning?"*
+- *"Compare FFIEC cybersecurity requirements with NYDFS 500"*
+
+### New York Financial Services & NYDFS
+- *"What are the NYDFS 500 requirements for multi-factor authentication?"*
+- *"When must I notify NYDFS of a cybersecurity event?"*
+- *"What are the penetration testing requirements under NYDFS 500?"*
 - *"What information security program elements does GLBA require?"*
 
 ### Education & FERPA

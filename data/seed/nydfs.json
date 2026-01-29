@@ -1,0 +1,108 @@
+{
+  "regulation": {
+    "id": "NYDFS_500",
+    "full_name": "NY DFS Cybersecurity Regulation",
+    "citation": "23 NYCRR 500",
+    "effective_date": "2017-03-01",
+    "jurisdiction": "state",
+    "regulation_type": "rule"
+  },
+  "sections": [
+    {
+      "sectionNumber": "500.02",
+      "title": "Cybersecurity Program",
+      "text": "Each Covered Entity shall maintain a cybersecurity program designed to protect the confidentiality, integrity and availability of the Covered Entity's Information Systems.",
+      "chapter": "Core Requirements"
+    },
+    {
+      "sectionNumber": "500.03",
+      "title": "Cybersecurity Policy",
+      "text": "Based on its Risk Assessment, each Covered Entity shall design its Cybersecurity Policy to perform the following core cybersecurity functions: identify, protect, detect, respond, and recover.",
+      "chapter": "Core Requirements"
+    },
+    {
+      "sectionNumber": "500.04",
+      "title": "Chief Information Security Officer",
+      "text": "Each Covered Entity shall designate a qualified individual responsible for overseeing and implementing the Covered Entity's cybersecurity program and enforcing its cybersecurity policy.",
+      "chapter": "Governance"
+    },
+    {
+      "sectionNumber": "500.05",
+      "title": "Penetration Testing and Vulnerability Assessments",
+      "text": "Based upon its Risk Assessment, each Covered Entity shall conduct annual penetration testing and bi-annual vulnerability assessments.",
+      "chapter": "Testing"
+    },
+    {
+      "sectionNumber": "500.06",
+      "title": "Audit Trail",
+      "text": "Each Covered Entity shall maintain systems to reconstruct material financial transactions and detect cybersecurity events. Audit logs shall be retained for a period of at least five years.",
+      "chapter": "Monitoring"
+    },
+    {
+      "sectionNumber": "500.07",
+      "title": "Access Privileges",
+      "text": "Each Covered Entity shall limit user access privileges to Information Systems that provide access to Nonpublic Information and shall periodically review such access privileges.",
+      "chapter": "Access Control"
+    },
+    {
+      "sectionNumber": "500.08",
+      "title": "Application Security",
+      "text": "Each Covered Entity shall utilize procedures to evaluate, assess, or test the security of externally developed applications utilized as part of the Covered Entity's Information Systems.",
+      "chapter": "Application Security"
+    },
+    {
+      "sectionNumber": "500.09",
+      "title": "Risk Assessment",
+      "text": "Each Covered Entity shall conduct periodic risk assessments that inform the design of its cybersecurity program and update the risk assessment when there are material changes to its business or technology environment.",
+      "chapter": "Risk Management"
+    },
+    {
+      "sectionNumber": "500.10",
+      "title": "Cybersecurity Personnel and Intelligence",
+      "text": "Each Covered Entity shall utilize qualified cybersecurity personnel and update the cybersecurity program based on current cybersecurity threat intelligence.",
+      "chapter": "Personnel"
+    },
+    {
+      "sectionNumber": "500.11",
+      "title": "Third Party Service Provider Security Policy",
+      "text": "Each Covered Entity shall implement policies and procedures designed to ensure the security of Information Systems and Nonpublic Information accessible to third party service providers.",
+      "chapter": "Third Parties"
+    },
+    {
+      "sectionNumber": "500.12",
+      "title": "Multi-Factor Authentication",
+      "text": "Each Covered Entity shall utilize Multi-Factor Authentication to protect against unauthorized access to Nonpublic Information or Information Systems.",
+      "chapter": "Authentication"
+    },
+    {
+      "sectionNumber": "500.13",
+      "title": "Limitations on Data Retention",
+      "text": "Each Covered Entity shall include policies and procedures for the secure disposal of Nonpublic Information within a reasonable time after it is no longer needed for business operations or legal purposes.",
+      "chapter": "Data Retention"
+    },
+    {
+      "sectionNumber": "500.14",
+      "title": "Training and Monitoring",
+      "text": "Each Covered Entity shall implement regular cybersecurity awareness training for all personnel and maintain procedures to monitor for authorized users' activity on Information Systems.",
+      "chapter": "Training"
+    },
+    {
+      "sectionNumber": "500.15",
+      "title": "Encryption of Nonpublic Information",
+      "text": "Each Covered Entity shall encrypt Nonpublic Information held or transmitted by the Covered Entity both in transit and at rest, or shall utilize effective alternative compensating controls reviewed and approved by the CISO.",
+      "chapter": "Encryption"
+    },
+    {
+      "sectionNumber": "500.16",
+      "title": "Incident Response Plan",
+      "text": "Each Covered Entity shall establish an incident response plan designed to promptly respond to cybersecurity events and restore normal operations.",
+      "chapter": "Incident Response"
+    },
+    {
+      "sectionNumber": "500.17",
+      "title": "Notice to Superintendent",
+      "text": "Each Covered Entity shall notify the superintendent as promptly as possible but in no event later than 72 hours from a determination that a cybersecurity event has occurred that is required to be reported.",
+      "chapter": "Reporting"
+    }
+  ]
+}

@@ -20,6 +20,8 @@ import {
 } from '../src/ingest/adapters/ecfr.js';
 import { createCcpaAdapter } from '../src/ingest/adapters/california-leginfo.js';
 import { createSoxAdapter } from '../src/ingest/adapters/regulations-gov.js';
+import { createFfiecAdapter } from '../src/ingest/adapters/ffiec.js';
+import { createNydfsAdapter } from '../src/ingest/adapters/nydfs.js';
 import type { SourceAdapter } from '../src/ingest/framework.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -179,6 +181,8 @@ const REGULATIONS = [
   { id: 'COPPA', adapter: createCoppaAdapter() },
   { id: 'FDA_CFR_11', adapter: createFdaAdapter() },
   { id: 'EPA_RMP', adapter: createEpaRmpAdapter() },
+  { id: 'FFIEC', adapter: createFfiecAdapter() },
+  { id: 'NYDFS_500', adapter: createNydfsAdapter() },
 ];
 
 /**
