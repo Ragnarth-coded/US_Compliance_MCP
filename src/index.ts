@@ -30,7 +30,7 @@ const db = getDatabase();
 const server = new Server(
   {
     name: 'us-regulations-mcp',
-    version: '0.1.0',
+    version: '1.1.0',
   },
   {
     capabilities: {

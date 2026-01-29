@@ -1,6 +1,6 @@
 {
   "name": "@ansvar/us-regulations-mcp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "mcpName": "us.ansvar/us-regulations-mcp",
   "description": "MCP server for US cybersecurity and privacy regulations. Query HIPAA, CCPA, SOX, GLBA, FERPA, COPPA, FDA 21 CFR Part 11, and EPA RMP directly from Claude.",
   "main": "dist/index.js",
