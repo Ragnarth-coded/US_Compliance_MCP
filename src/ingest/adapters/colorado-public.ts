@@ -98,7 +98,7 @@ export class ColoradoPublicAdapter implements SourceAdapter {
     }
 
     return {
-      section_number: `6-1-${num}`,
+      sectionNumber: `6-1-${num}`,
       title: title,
       text: text,
     };
@@ -108,11 +108,11 @@ export class ColoradoPublicAdapter implements SourceAdapter {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async *fetchDefinitions(): AsyncGenerator<Definition[]> {
-    return;
+  async extractDefinitions(): Promise<Definition[]> {
+    return [];
   }
 
-  async checkForUpdates(): Promise<UpdateStatus> {
+  async checkForUpdates(lastFetched: Date): Promise<UpdateStatus> {
     return { hasChanges: false };
   }
 }

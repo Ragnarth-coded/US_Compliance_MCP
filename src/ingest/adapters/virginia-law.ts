@@ -115,7 +115,7 @@ export class VirginiaLawAdapter implements SourceAdapter {
     const title = titleMatch ? titleMatch[1].trim() : titleRaw;
 
     return {
-      section_number: `59.1-${num}`,
+      sectionNumber: `59.1-${num}`,
       title: title,
       text: text,
     };
@@ -125,12 +125,12 @@ export class VirginiaLawAdapter implements SourceAdapter {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async *fetchDefinitions(): AsyncGenerator<Definition[]> {
+  async extractDefinitions(): Promise<Definition[]> {
     // No separate definitions for Virginia CDPA
-    return;
+    return [];
   }
 
-  async checkForUpdates(): Promise<UpdateStatus> {
+  async checkForUpdates(lastFetched: Date): Promise<UpdateStatus> {
     return { hasChanges: false };
   }
 }

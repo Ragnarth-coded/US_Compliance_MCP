@@ -22,6 +22,10 @@ import { createCcpaAdapter } from '../src/ingest/adapters/california-leginfo.js'
 import { createSoxAdapter } from '../src/ingest/adapters/regulations-gov.js';
 import { createFfiecAdapter } from '../src/ingest/adapters/ffiec.js';
 import { createNydfsAdapter } from '../src/ingest/adapters/nydfs.js';
+import { createVirginiaAdapter } from '../src/ingest/adapters/virginia-law.js';
+import { createColoradoAdapter } from '../src/ingest/adapters/colorado-public.js';
+import { createConnecticutAdapter } from '../src/ingest/adapters/connecticut-cga.js';
+import { createUtahAdapter } from '../src/ingest/adapters/utah-xcode.js';
 import type { SourceAdapter } from '../src/ingest/framework.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -183,6 +187,10 @@ const REGULATIONS = [
   { id: 'EPA_RMP', adapter: createEpaRmpAdapter() },
   { id: 'FFIEC', adapter: createFfiecAdapter() },
   { id: 'NYDFS_500', adapter: createNydfsAdapter() },
+  { id: 'VIRGINIA_CDPA', adapter: createVirginiaAdapter() },
+  { id: 'COLORADO_CPA', adapter: createColoradoAdapter() },
+  { id: 'CONNECTICUT_CTDPA', adapter: createConnecticutAdapter() },
+  { id: 'UTAH_UCPA', adapter: createUtahAdapter() },
 ];
 
 /**

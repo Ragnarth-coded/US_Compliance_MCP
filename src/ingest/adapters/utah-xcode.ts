@@ -119,7 +119,7 @@ export class UtahXcodeAdapter implements SourceAdapter {
     const title = titleMatch ? titleMatch[1].trim() : `Section 13-61-${sectionNum}`;
 
     return {
-      section_number: `13-61-${sectionNum}`,
+      sectionNumber: `13-61-${sectionNum}`,
       title: title,
       text: content,
     };
@@ -129,11 +129,11 @@ export class UtahXcodeAdapter implements SourceAdapter {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async *fetchDefinitions(): AsyncGenerator<Definition[]> {
-    return;
+  async extractDefinitions(): Promise<Definition[]> {
+    return [];
   }
 
-  async checkForUpdates(): Promise<UpdateStatus> {
+  async checkForUpdates(lastFetched: Date): Promise<UpdateStatus> {
     return { hasChanges: false };
   }
 }

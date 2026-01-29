@@ -16,6 +16,7 @@ import {
   UpdateStatus,
 } from '../framework.js';
 import * as cheerio from 'cheerio';
+import https from 'https';
 
 class ScrapingError extends Error {
   constructor(message: string) {
@@ -45,14 +46,8 @@ export class ConnecticutCGAAdapter implements SourceAdapter {
   async *fetchSections(): AsyncGenerator<Section[]> {
     console.log('Fetching Connecticut CTDPA from single chapter page...');
 
-    const response = await fetch(this.chapterUrl);
-    if (!response.ok) {
-      throw new ScrapingError(
-        `Failed to fetch chapter page: HTTP ${response.status}`
-      );
-    }
-
-    const html = await response.text();
+    // Connecticut's certificate has SSL issues, use https module directly
+    const html = await this.fetchWithHttps(this.chapterUrl);
     const $ = cheerio.load(html);
 
     const sections = this.parseSections($);
@@ -65,6 +60,22 @@ export class ConnecticutCGAAdapter implements SourceAdapter {
 
     console.log(`  ✅ Parsed ${sections.length} sections from chapter page`);
     yield sections;
+  }
+
+  private async fetchWithHttps(url: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      https.get(url, { rejectUnauthorized: false }, (res) => {
+        if (res.statusCode !== 200) {
+          reject(new ScrapingError(`HTTP ${res.statusCode}`));
+          return;
+        }
+
+        let data = '';
+        res.on('data', (chunk) => data += chunk);
+        res.on('end', () => resolve(data));
+        res.on('error', reject);
+      }).on('error', reject);
+    });
   }
 
   private parseSections($: cheerio.Root): Section[] {
@@ -112,7 +123,7 @@ export class ConnecticutCGAAdapter implements SourceAdapter {
       const num = parseInt(sectionNum);
       if (num >= 515 && num <= 526) {
         sections.push({
-          section_number: `42-${sectionNum}`,
+          sectionNumber: `42-${sectionNum}`,
           title: title,
           text: fullText,
         });
@@ -124,12 +135,12 @@ export class ConnecticutCGAAdapter implements SourceAdapter {
     return sections;
   }
 
-  async *fetchDefinitions(): AsyncGenerator<Definition[]> {
+  async extractDefinitions(): Promise<Definition[]> {
     // Definitions are in section 42-515, could be extracted if needed
-    return;
+    return [];
   }
 
-  async checkForUpdates(): Promise<UpdateStatus> {
+  async checkForUpdates(lastFetched: Date): Promise<UpdateStatus> {
     return { hasChanges: false };
   }
 }
