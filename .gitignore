@@ -1,6 +1,3 @@
-# Git worktrees
-.worktrees/
-
 # Dependencies
 node_modules/
 
@@ -17,11 +14,29 @@ data/*.db-*
 .env.local
 
 # IDE
-.vscode/
 .idea/
+.vscode/
 *.swp
 *.swo
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+
+# Internal documentation and work-in-progress
+internal/
+
+# MCP Registry tokens and local configs
+.mcpregistry_*
+.playwright-mcp/
+.serena/
+
+# Git worktrees (isolated feature branches)
+.worktrees/
