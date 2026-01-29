@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist && find . -name '*.tsbuildinfo' -not -path './node_modules/*' -delete",
-    "test": "vitest run",
+    "test": "tsx scripts/quality-test.ts && tsx scripts/test-remaining-tools.ts && tsx scripts/test-mcp-tools.ts && tsx scripts/test-ecfr-adapter.ts",
     "test:watch": "vitest",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
