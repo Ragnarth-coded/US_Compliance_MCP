@@ -18,17 +18,35 @@ import {
 import { XMLParser } from 'fast-xml-parser';
 
 /**
+ * Configuration for regulation metadata fallback
+ */
+export interface RegulationConfig {
+  full_name: string;
+  citation: string;
+  effective_date: string;
+  jurisdiction: 'federal' | 'state';
+  regulation_type: 'rule' | 'statute';
+}
+
+/**
  * Adapter for fetching HIPAA from eCFR API
  */
 export class EcfrAdapter implements SourceAdapter {
   private readonly regulationId: string;
   private readonly cfr_title: number;
   private readonly cfr_parts: number[];
+  private readonly fallbackMetadata: RegulationConfig;
 
-  constructor(regulationId: string, cfr_title: number, cfr_parts: number[]) {
+  constructor(
+    regulationId: string,
+    cfr_title: number,
+    cfr_parts: number[],
+    fallbackMetadata: RegulationConfig
+  ) {
     this.regulationId = regulationId;
     this.cfr_title = cfr_title;
     this.cfr_parts = cfr_parts;
+    this.fallbackMetadata = fallbackMetadata;
   }
 
   /**
@@ -399,5 +417,11 @@ export class EcfrAdapter implements SourceAdapter {
  * Factory function to create HIPAA adapter
  */
 export function createHipaaAdapter(): EcfrAdapter {
-  return new EcfrAdapter('HIPAA', 45, [160, 162, 164]);
+  return new EcfrAdapter('HIPAA', 45, [160, 162, 164], {
+    full_name: 'Health Insurance Portability and Accountability Act',
+    citation: '45 CFR Parts 160, 162, 164',
+    effective_date: '2003-04-14',
+    jurisdiction: 'federal',
+    regulation_type: 'rule'
+  });
 }

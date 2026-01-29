@@ -30,7 +30,13 @@ export class SoxAdapter implements SourceAdapter {
   constructor(regulationId: string) {
     this.regulationId = regulationId;
     // Use eCFR adapter for Title 17 (SEC regulations)
-    this.ecfrAdapter = new EcfrAdapter('SOX-SEC', 17, [229, 240]);
+    this.ecfrAdapter = new EcfrAdapter('SOX-SEC', 17, [229, 240], {
+      full_name: 'Sarbanes-Oxley Act',
+      citation: '17 CFR Parts 229, 240',
+      effective_date: '2002-07-30',
+      jurisdiction: 'federal',
+      regulation_type: 'rule'
+    });
   }
 
   /**
