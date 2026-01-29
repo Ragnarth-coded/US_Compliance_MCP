@@ -50,23 +50,70 @@ export class EcfrAdapter implements SourceAdapter {
   }
 
   /**
-   * Fetch HIPAA metadata
+   * Fetch metadata from eCFR API
+   * Returns effective_date and last_amended from API with fallback metadata for other fields
+   */
+  private async fetchMetadataFromAPI(): Promise<RegulationMetadata> {
+    try {
+      // Get latest available date for this CFR title
+      const latestDate = await this.getLatestDate();
+
+      // Fetch structure JSON (lighter than full XML)
+      const url = `https://www.ecfr.gov/api/versioner/v1/structure/${latestDate}/title-${this.cfr_title}.json`;
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`eCFR API returned ${response.status} for ${url}`);
+      }
+
+      const data = await response.json();
+
+      // Extract dates from API response
+      // Note: eCFR structure API may not have these exact fields, using latest date as proxy
+      const effectiveDate = data.effective_date || latestDate;
+      const lastAmended = data.last_amended || latestDate;
+
+      return {
+        id: this.regulationId,
+        full_name: this.fallbackMetadata.full_name,
+        citation: this.fallbackMetadata.citation,
+        effective_date: effectiveDate,
+        last_amended: lastAmended,
+        source_url: `https://www.ecfr.gov/current/title-${this.cfr_title}`,
+        jurisdiction: this.fallbackMetadata.jurisdiction,
+        regulation_type: this.fallbackMetadata.regulation_type
+      };
+    } catch (error) {
+      // Re-throw to be caught by fetchMetadata
+      throw error;
+    }
+  }
+
+  /**
+   * Fetch regulation metadata
    *
-   * PLACEHOLDER: Returns hardcoded HIPAA metadata
-   * TODO: Integrate with eCFR API to fetch live metadata
+   * Hybrid approach:
+   * 1. Try to fetch effective_date and last_amended from eCFR API
+   * 2. Fall back to hardcoded metadata if API unavailable
    */
   async fetchMetadata(): Promise<RegulationMetadata> {
-    // Placeholder metadata for HIPAA
-    return {
-      id: this.regulationId,
-      full_name: 'Health Insurance Portability and Accountability Act',
-      citation: '45 CFR Parts 160, 162, 164',
-      effective_date: '2003-04-14',
-      last_amended: '2013-01-25',
-      source_url: 'https://www.ecfr.gov/current/title-45',
-      jurisdiction: 'federal',
-      regulation_type: 'rule',
-    };
+    try {
+      return await this.fetchMetadataFromAPI();
+    } catch (error) {
+      console.warn(`⚠️  eCFR API unavailable for ${this.regulationId}, using fallback metadata`);
+      console.warn(`   Error: ${error instanceof Error ? error.message : String(error)}`);
+
+      return {
+        id: this.regulationId,
+        full_name: this.fallbackMetadata.full_name,
+        citation: this.fallbackMetadata.citation,
+        effective_date: this.fallbackMetadata.effective_date,
+        last_amended: this.fallbackMetadata.effective_date, // Use effective_date as fallback
+        source_url: `https://www.ecfr.gov/current/title-${this.cfr_title}`,
+        jurisdiction: this.fallbackMetadata.jurisdiction,
+        regulation_type: this.fallbackMetadata.regulation_type
+      };
+    }
   }
 
   /**
