@@ -4,6 +4,7 @@ import {
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 import Database from 'better-sqlite3';
+import { searchRegulations, SearchInput } from './search.js';
 
 export interface ToolDefinition {
   name: string;
@@ -17,7 +18,33 @@ export interface ToolDefinition {
  * Single source of truth for both stdio and HTTP servers.
  */
 export const TOOLS: ToolDefinition[] = [
-  // Tools will be added in later tasks
+  {
+    name: 'search_regulations',
+    description: 'Search across all US regulations using full-text search. Returns relevant sections with highlighted snippets. Token-efficient: returns 32-token snippets with >>> <<< markers around matched terms.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        query: {
+          type: 'string',
+          description: 'Search query (supports natural language and technical terms)',
+        },
+        regulations: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Optional: Filter results to specific regulations (e.g., ["HIPAA", "CCPA"])',
+        },
+        limit: {
+          type: 'number',
+          description: 'Maximum number of results to return (default: 10, max: 1000)',
+          default: 10,
+        },
+      },
+      required: ['query'],
+    },
+    handler: async (db: Database.Database, args: any) => {
+      return await searchRegulations(db, args as SearchInput);
+    },
+  },
 ];
 
 /**
