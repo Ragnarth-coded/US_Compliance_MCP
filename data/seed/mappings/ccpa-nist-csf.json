@@ -1,0 +1,144 @@
+{
+  "framework": "NIST_CSF_2_0",
+  "regulation": "CCPA",
+  "generated_at": "2026-01-29",
+  "generated_by": "claude-sonnet-4-5",
+  "description": "Mapping of CCPA/CPRA requirements to NIST Cybersecurity Framework 2.0",
+  "mappings": [
+    {
+      "section_number": "1798.1798.100",
+      "function": "GV",
+      "category": "GV.PO",
+      "subcategory": "GV.PO-02",
+      "coverage": "full",
+      "confidence": 93,
+      "rationale": "Privacy program roles and responsibilities align with governance"
+    },
+    {
+      "section_number": "1798.1798.105",
+      "function": "PR",
+      "category": "PR.DS",
+      "subcategory": "PR.DS-03",
+      "coverage": "partial",
+      "confidence": 88,
+      "rationale": "Right to deletion requires data lifecycle management"
+    },
+    {
+      "section_number": "1798.1798.110",
+      "function": "ID",
+      "category": "ID.IM",
+      "subcategory": "ID.IM-01",
+      "coverage": "full",
+      "confidence": 91,
+      "rationale": "Right to know requires data inventory and mapping"
+    },
+    {
+      "section_number": "1798.1798.115",
+      "function": "GV",
+      "category": "GV.MT",
+      "subcategory": "GV.MT-04",
+      "coverage": "partial",
+      "confidence": 85,
+      "rationale": "Disclosure requirements align with transparency goals"
+    },
+    {
+      "section_number": "1798.1798.121",
+      "function": "PR",
+      "category": "PR.DS",
+      "subcategory": "PR.DS-01",
+      "coverage": "full",
+      "confidence": 92,
+      "rationale": "Sensitive personal information controls require protection"
+    },
+    {
+      "section_number": "1798.1798.125",
+      "function": "GV",
+      "category": "GV.PO",
+      "subcategory": "GV.PO-01",
+      "coverage": "partial",
+      "confidence": 79,
+      "rationale": "Non-discrimination provisions relate to privacy governance"
+    },
+    {
+      "section_number": "1798.1798.135",
+      "function": "GV",
+      "category": "GV.RR",
+      "subcategory": "GV.RR-01",
+      "coverage": "full",
+      "confidence": 89,
+      "rationale": "Opt-out mechanisms require rights management processes"
+    },
+    {
+      "section_number": "1798.1798.14",
+      "function": "GV",
+      "category": "GV.PO",
+      "subcategory": "GV.PO-03",
+      "coverage": "full",
+      "confidence": 94,
+      "rationale": "Privacy notice requirements align with policy establishment"
+    },
+    {
+      "section_number": "1798.1798.145",
+      "function": "GV",
+      "category": "GV.OC",
+      "subcategory": "GV.OC-01",
+      "coverage": "partial",
+      "confidence": 81,
+      "rationale": "Exemptions require organizational context awareness"
+    },
+    {
+      "section_number": "1798.1798.15",
+      "function": "PR",
+      "category": "PR.DS",
+      "subcategory": "PR.DS-02",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "Data protection measures required for consumer information"
+    },
+    {
+      "section_number": "1798.1798.155",
+      "function": "GV",
+      "category": "GV.SC",
+      "subcategory": "GV.SC-04",
+      "coverage": "partial",
+      "confidence": 84,
+      "rationale": "Service provider requirements align with supply chain management"
+    },
+    {
+      "section_number": "1798.1798.16",
+      "function": "PR",
+      "category": "PR.AA",
+      "subcategory": "PR.AA-02",
+      "coverage": "full",
+      "confidence": 87,
+      "rationale": "Consumer verification processes require identity management"
+    },
+    {
+      "section_number": "1798.1798.175",
+      "function": "GV",
+      "category": "GV.RR",
+      "subcategory": "GV.RR-03",
+      "coverage": "full",
+      "confidence": 86,
+      "rationale": "Enforcement procedures align with rights response"
+    },
+    {
+      "section_number": "1798.1798.185",
+      "function": "RS",
+      "category": "RS.MA",
+      "subcategory": "RS.MA-02",
+      "coverage": "partial",
+      "confidence": 83,
+      "rationale": "Data breach notification aligns with incident communication"
+    },
+    {
+      "section_number": "1798.1798.199",
+      "function": "GV",
+      "category": "GV.OV",
+      "subcategory": "GV.OV-01",
+      "coverage": "full",
+      "confidence": 91,
+      "rationale": "Privacy program oversight requirements"
+    }
+  ]
+}

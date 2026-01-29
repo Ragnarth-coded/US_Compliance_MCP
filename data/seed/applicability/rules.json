@@ -1,0 +1,74 @@
+{
+  "rules": [
+    {
+      "regulation": "HIPAA",
+      "sector": "healthcare",
+      "subsector": null,
+      "confidence": "definite",
+      "rationale": "HIPAA applies to covered entities: healthcare providers, health plans, and healthcare clearinghouses"
+    },
+    {
+      "regulation": "HIPAA",
+      "sector": "technology",
+      "subsector": "health-tech",
+      "confidence": "likely",
+      "rationale": "Health technology companies are typically business associates under HIPAA when handling PHI"
+    },
+    {
+      "regulation": "HIPAA",
+      "sector": "insurance",
+      "subsector": "health-insurance",
+      "confidence": "definite",
+      "rationale": "Health plans are covered entities under HIPAA"
+    },
+    {
+      "regulation": "CCPA",
+      "sector": "all",
+      "subsector": null,
+      "confidence": "possible",
+      "rationale": "CCPA applies to for-profit businesses in California with $25M+ revenue, 50K+ consumers, or 50%+ revenue from selling data"
+    },
+    {
+      "regulation": "CCPA",
+      "sector": "technology",
+      "subsector": null,
+      "confidence": "likely",
+      "rationale": "Technology companies often meet CCPA thresholds for consumer data processing"
+    },
+    {
+      "regulation": "CCPA",
+      "sector": "retail",
+      "subsector": null,
+      "confidence": "likely",
+      "rationale": "Retail businesses in California commonly collect consumer personal information"
+    },
+    {
+      "regulation": "CCPA",
+      "sector": "marketing",
+      "subsector": null,
+      "confidence": "likely",
+      "rationale": "Marketing firms typically process significant California consumer data"
+    },
+    {
+      "regulation": "SOX",
+      "sector": "financial",
+      "subsector": "public-companies",
+      "confidence": "definite",
+      "rationale": "SOX applies to all publicly traded companies and their auditors"
+    },
+    {
+      "regulation": "SOX",
+      "sector": "technology",
+      "subsector": "public-companies",
+      "confidence": "definite",
+      "rationale": "Public technology companies must comply with SOX Section 404"
+    },
+    {
+      "regulation": "SOX",
+      "sector": "financial",
+      "subsector": "accounting-firms",
+      "confidence": "definite",
+      "rationale": "Public accounting firms auditing public companies must comply with SOX"
+    }
+  ]
+}

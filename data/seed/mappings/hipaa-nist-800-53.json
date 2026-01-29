@@ -1,0 +1,377 @@
+{
+  "framework": "NIST_800_53_R5",
+  "regulation": "HIPAA",
+  "generated_at": "2026-01-29",
+  "generated_by": "claude-sonnet-4-5",
+  "description": "Mapping of HIPAA Security Rule requirements to NIST 800-53 Rev 5 controls",
+  "mappings": [
+    {
+      "section_number": "164.308(a)(1)",
+      "control_id": "RA-1",
+      "control_name": "Risk Assessment Policy and Procedures",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "HIPAA requires security management process including risk analysis"
+    },
+    {
+      "section_number": "164.308(a)(1)(ii)(A)",
+      "control_id": "RA-3",
+      "control_name": "Risk Assessment",
+      "coverage": "full",
+      "confidence": 98,
+      "rationale": "Directly requires risk assessment of ePHI threats and vulnerabilities"
+    },
+    {
+      "section_number": "164.308(a)(1)(ii)(B)",
+      "control_id": "RA-5",
+      "control_name": "Vulnerability Monitoring and Scanning",
+      "coverage": "partial",
+      "confidence": 85,
+      "rationale": "Risk management requires ongoing vulnerability identification"
+    },
+    {
+      "section_number": "164.308(a)(3)",
+      "control_id": "AC-1",
+      "control_name": "Access Control Policy and Procedures",
+      "coverage": "full",
+      "confidence": 97,
+      "rationale": "HIPAA requires workforce access control policies and procedures"
+    },
+    {
+      "section_number": "164.308(a)(3)(ii)(A)",
+      "control_id": "AC-2",
+      "control_name": "Account Management",
+      "coverage": "partial",
+      "confidence": 90,
+      "rationale": "Requires procedures for granting access to ePHI"
+    },
+    {
+      "section_number": "164.308(a)(3)(ii)(B)",
+      "control_id": "AC-5",
+      "control_name": "Separation of Duties",
+      "coverage": "related",
+      "confidence": 75,
+      "rationale": "Workforce clearance procedures relate to separation of duties"
+    },
+    {
+      "section_number": "164.308(a)(3)(ii)(C)",
+      "control_id": "AC-6",
+      "control_name": "Least Privilege",
+      "coverage": "partial",
+      "confidence": 88,
+      "rationale": "Requires termination procedures limiting access rights"
+    },
+    {
+      "section_number": "164.308(a)(4)",
+      "control_id": "AT-1",
+      "control_name": "Security Awareness and Training Policy",
+      "coverage": "full",
+      "confidence": 96,
+      "rationale": "HIPAA mandates security awareness and training program"
+    },
+    {
+      "section_number": "164.308(a)(5)(ii)(B)",
+      "control_id": "AU-6",
+      "control_name": "Audit Record Review, Analysis, and Reporting",
+      "coverage": "partial",
+      "confidence": 82,
+      "rationale": "Protection from malicious software requires log monitoring"
+    },
+    {
+      "section_number": "164.308(a)(5)(ii)(C)",
+      "control_id": "AU-2",
+      "control_name": "Event Logging",
+      "coverage": "partial",
+      "confidence": 85,
+      "rationale": "Log-in monitoring procedures require event logging"
+    },
+    {
+      "section_number": "164.308(a)(6)",
+      "control_id": "IR-1",
+      "control_name": "Incident Response Policy and Procedures",
+      "coverage": "full",
+      "confidence": 94,
+      "rationale": "HIPAA requires security incident procedures"
+    },
+    {
+      "section_number": "164.308(a)(6)(ii)",
+      "control_id": "IR-4",
+      "control_name": "Incident Handling",
+      "coverage": "full",
+      "confidence": 93,
+      "rationale": "Requires identifying and responding to security incidents"
+    },
+    {
+      "section_number": "164.308(a)(7)",
+      "control_id": "CP-1",
+      "control_name": "Contingency Planning Policy and Procedures",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "HIPAA mandates contingency plan for emergencies"
+    },
+    {
+      "section_number": "164.308(a)(7)(ii)(A)",
+      "control_id": "CP-2",
+      "control_name": "Contingency Plan",
+      "coverage": "full",
+      "confidence": 94,
+      "rationale": "Requires data backup plan"
+    },
+    {
+      "section_number": "164.308(a)(7)(ii)(B)",
+      "control_id": "CP-9",
+      "control_name": "System Backup",
+      "coverage": "full",
+      "confidence": 96,
+      "rationale": "Requires disaster recovery plan with backups"
+    },
+    {
+      "section_number": "164.308(a)(7)(ii)(D)",
+      "control_id": "CP-10",
+      "control_name": "System Recovery and Reconstitution",
+      "coverage": "full",
+      "confidence": 92,
+      "rationale": "Requires emergency mode operation plan"
+    },
+    {
+      "section_number": "164.308(a)(8)",
+      "control_id": "CA-2",
+      "control_name": "Control Assessments",
+      "coverage": "partial",
+      "confidence": 80,
+      "rationale": "Evaluation standard requires periodic technical and non-technical assessments"
+    },
+    {
+      "section_number": "164.308(b)(1)",
+      "control_id": "SA-9",
+      "control_name": "External System Services",
+      "coverage": "partial",
+      "confidence": 87,
+      "rationale": "Business associate contracts govern external service providers"
+    },
+    {
+      "section_number": "164.312(a)(1)",
+      "control_id": "AC-3",
+      "control_name": "Access Enforcement",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "Technical controls must enforce access authorization"
+    },
+    {
+      "section_number": "164.312(a)(2)(i)",
+      "control_id": "IA-2",
+      "control_name": "Identification and Authentication",
+      "coverage": "full",
+      "confidence": 97,
+      "rationale": "Requires unique user identification for ePHI access"
+    },
+    {
+      "section_number": "164.312(a)(2)(iii)",
+      "control_id": "AC-12",
+      "control_name": "Session Termination",
+      "coverage": "full",
+      "confidence": 91,
+      "rationale": "Requires automatic logoff after predetermined time"
+    },
+    {
+      "section_number": "164.312(a)(2)(iv)",
+      "control_id": "SC-10",
+      "control_name": "Network Disconnect",
+      "coverage": "partial",
+      "confidence": 78,
+      "rationale": "Encryption and decryption relates to secure connections"
+    },
+    {
+      "section_number": "164.312(b)",
+      "control_id": "AU-9",
+      "control_name": "Protection of Audit Information",
+      "coverage": "partial",
+      "confidence": 86,
+      "rationale": "Audit controls protect log integrity"
+    },
+    {
+      "section_number": "164.312(c)(1)",
+      "control_id": "SC-13",
+      "control_name": "Cryptographic Protection",
+      "coverage": "partial",
+      "confidence": 88,
+      "rationale": "Integrity controls for ePHI authentication"
+    },
+    {
+      "section_number": "164.312(d)",
+      "control_id": "PE-3",
+      "control_name": "Physical Access Control",
+      "coverage": "related",
+      "confidence": 72,
+      "rationale": "Person or entity authentication relates to physical access"
+    },
+    {
+      "section_number": "164.312(e)(1)",
+      "control_id": "SC-8",
+      "control_name": "Transmission Confidentiality and Integrity",
+      "coverage": "full",
+      "confidence": 94,
+      "rationale": "Technical security measures for ePHI transmission"
+    },
+    {
+      "section_number": "164.312(e)(2)(i)",
+      "control_id": "IA-5",
+      "control_name": "Authenticator Management",
+      "coverage": "partial",
+      "confidence": 83,
+      "rationale": "Integrity controls ensure authentication mechanisms"
+    },
+    {
+      "section_number": "164.312(e)(2)(ii)",
+      "control_id": "SC-8(1)",
+      "control_name": "Transmission Confidentiality - Cryptographic Protection",
+      "coverage": "partial",
+      "confidence": 89,
+      "rationale": "Encryption addressable specification for transmission security"
+    },
+    {
+      "section_number": "164.310(a)(1)",
+      "control_id": "PE-2",
+      "control_name": "Physical Access Authorizations",
+      "coverage": "full",
+      "confidence": 93,
+      "rationale": "HIPAA requires facility access controls"
+    },
+    {
+      "section_number": "164.310(a)(2)(ii)",
+      "control_id": "PE-6",
+      "control_name": "Monitoring Physical Access",
+      "coverage": "partial",
+      "confidence": 84,
+      "rationale": "Facility security plan includes access monitoring"
+    },
+    {
+      "section_number": "164.310(b)",
+      "control_id": "PE-16",
+      "control_name": "Delivery and Removal",
+      "coverage": "related",
+      "confidence": 74,
+      "rationale": "Workstation use standard relates to equipment controls"
+    },
+    {
+      "section_number": "164.310(c)",
+      "control_id": "PE-17",
+      "control_name": "Alternate Work Site",
+      "coverage": "partial",
+      "confidence": 79,
+      "rationale": "Workstation security addresses location-based controls"
+    },
+    {
+      "section_number": "164.310(d)(1)",
+      "control_id": "MP-6",
+      "control_name": "Media Sanitization",
+      "coverage": "full",
+      "confidence": 92,
+      "rationale": "Device and media controls require sanitization procedures"
+    },
+    {
+      "section_number": "164.310(d)(2)(i)",
+      "control_id": "MP-5",
+      "control_name": "Media Transport",
+      "coverage": "partial",
+      "confidence": 81,
+      "rationale": "Disposal procedures include secure media handling"
+    },
+    {
+      "section_number": "164.310(d)(2)(iii)",
+      "control_id": "MP-2",
+      "control_name": "Media Access",
+      "coverage": "partial",
+      "confidence": 76,
+      "rationale": "Accountability standard relates to media access controls"
+    },
+    {
+      "section_number": "164.308(a)(4)(ii)(A)",
+      "control_id": "AT-2",
+      "control_name": "Literacy Training and Awareness",
+      "coverage": "full",
+      "confidence": 91,
+      "rationale": "Security reminders required for workforce"
+    },
+    {
+      "section_number": "164.308(a)(4)(ii)(B)",
+      "control_id": "AT-3",
+      "control_name": "Role-Based Training",
+      "coverage": "partial",
+      "confidence": 85,
+      "rationale": "Protection from malicious software training relates to role-based security"
+    },
+    {
+      "section_number": "164.308(a)(4)(ii)(C)",
+      "control_id": "AT-4",
+      "control_name": "Training Records",
+      "coverage": "related",
+      "confidence": 70,
+      "rationale": "Log-in monitoring relates to documenting training"
+    },
+    {
+      "section_number": "164.314(a)(1)",
+      "control_id": "SA-9(2)",
+      "control_name": "External System Services - Identification of Functions",
+      "coverage": "partial",
+      "confidence": 82,
+      "rationale": "Business associate agreements specify service functions"
+    },
+    {
+      "section_number": "164.314(a)(2)(i)",
+      "control_id": "CA-3",
+      "control_name": "Information Exchange",
+      "coverage": "partial",
+      "confidence": 78,
+      "rationale": "Data use agreements govern information exchange"
+    },
+    {
+      "section_number": "164.316(a)",
+      "control_id": "PL-1",
+      "control_name": "Policy and Procedures",
+      "coverage": "full",
+      "confidence": 96,
+      "rationale": "HIPAA mandates security policies and procedures"
+    },
+    {
+      "section_number": "164.316(b)(1)",
+      "control_id": "CM-3",
+      "control_name": "Configuration Change Control",
+      "coverage": "partial",
+      "confidence": 77,
+      "rationale": "Documentation requirements include change management"
+    },
+    {
+      "section_number": "164.316(b)(2)(i)",
+      "control_id": "AU-11",
+      "control_name": "Audit Record Retention",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "HIPAA requires 6-year retention of documentation"
+    },
+    {
+      "section_number": "164.308(a)(2)",
+      "control_id": "PS-2",
+      "control_name": "Position Risk Designation",
+      "coverage": "related",
+      "confidence": 73,
+      "rationale": "Assigned security responsibility relates to position risk"
+    },
+    {
+      "section_number": "164.308(a)(3)(i)",
+      "control_id": "AC-1",
+      "control_name": "Access Control Policy",
+      "coverage": "full",
+      "confidence": 94,
+      "rationale": "Authorization/supervision standard requires access policies"
+    },
+    {
+      "section_number": "164.308(a)(5)(ii)(A)",
+      "control_id": "SI-3",
+      "control_name": "Malicious Code Protection",
+      "coverage": "partial",
+      "confidence": 87,
+      "rationale": "Protection from malicious software procedures"
+    }
+  ]
+}
