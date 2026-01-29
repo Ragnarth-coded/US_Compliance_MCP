@@ -19,6 +19,7 @@
     "ingest": "tsx scripts/ingest.ts",
     "load-seed": "tsx scripts/load-seed-data.ts",
     "test:mcp": "tsx scripts/test-mcp-tools.ts",
+    "check-updates": "tsx scripts/check-updates.ts",
     "lint": "eslint src --ext .ts",
     "prepare": "test -f dist/index.js || npm run build",
     "prepublishOnly": "npm run build"
