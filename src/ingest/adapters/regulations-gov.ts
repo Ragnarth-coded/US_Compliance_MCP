@@ -1,16 +1,11 @@
 /**
- * Regulations.gov Adapter
+ * SOX Adapter
  *
- * Fetches SOX-related regulations from regulations.gov API.
- * Source: SEC regulations implementing Sarbanes-Oxley Act (particularly Section 404)
+ * Fetches SOX regulations from eCFR (for SEC implementing rules).
+ * Source: 17 CFR Part 229 (Regulation S-K, Item 308) and Part 240 (Exchange Act Rules)
  *
- * PLACEHOLDER IMPLEMENTATION FOR MVP
- * This is a minimal implementation that returns hardcoded metadata.
- * Future integration will use the regulations.gov API.
- *
- * NOTE: regulations.gov API requires a free API key
- * Get your key at: https://open.gsa.gov/api/regulationsgov/
- * Set as environment variable: REGULATIONS_GOV_API_KEY
+ * PRODUCTION IMPLEMENTATION
+ * Uses eCFR API for SEC regulations implementing Sarbanes-Oxley Section 404
  */
 
 import {
@@ -20,109 +15,98 @@ import {
   Definition,
   UpdateStatus,
 } from '../framework.js';
+import { XMLParser } from 'fast-xml-parser';
+import { EcfrAdapter } from './ecfr.js';
 
 /**
- * Adapter for fetching SOX regulations from regulations.gov
+ * Adapter for fetching SOX regulations from eCFR
+ *
+ * Uses eCFR API for SEC regulations implementing Sarbanes-Oxley
  */
-export class RegulationsGovAdapter implements SourceAdapter {
+export class SoxAdapter implements SourceAdapter {
   private readonly regulationId: string;
-  private readonly docketId?: string;
-  private readonly apiKey?: string;
+  private readonly ecfrAdapter: EcfrAdapter;
 
-  constructor(regulationId: string, docketId?: string) {
+  constructor(regulationId: string) {
     this.regulationId = regulationId;
-    this.docketId = docketId;
-    this.apiKey = process.env.REGULATIONS_GOV_API_KEY;
+    // Use eCFR adapter for Title 17 (SEC regulations)
+    this.ecfrAdapter = new EcfrAdapter('SOX-SEC', 17, [229, 240]);
   }
 
   /**
    * Fetch SOX metadata
-   *
-   * PLACEHOLDER: Returns hardcoded SOX metadata
-   * TODO: Integrate with regulations.gov API to fetch live metadata
-   * API endpoint: https://api.regulations.gov/v4/documents/{documentId}
    */
   async fetchMetadata(): Promise<RegulationMetadata> {
-    // Placeholder metadata for SOX
     return {
       id: this.regulationId,
-      full_name: 'Sarbanes-Oxley Act (SOX)',
-      citation: 'Pub. L. 107-204, 116 Stat. 745',
-      effective_date: '2002-07-30',
-      last_amended: '2010-07-21',
-      source_url: 'https://www.sec.gov/rules/final/33-8238.htm',
+      full_name: 'Sarbanes-Oxley Act - SEC Implementing Regulations',
+      citation: '17 CFR Parts 229, 240 (Regulation S-K Item 308, Exchange Act Rules)',
+      effective_date: '2003-06-05',
+      last_amended: new Date().toISOString().split('T')[0],
+      source_url: 'https://www.ecfr.gov/current/title-17',
       jurisdiction: 'federal',
-      regulation_type: 'statute',
+      regulation_type: 'rule',
     };
   }
 
   /**
-   * Fetch all SOX-related sections
+   * Fetch all SOX-related sections from eCFR
    *
-   * PLACEHOLDER: Returns empty iterator
-   * TODO: Implement API integration with regulations.gov
-   * Requires API key (REGULATIONS_GOV_API_KEY environment variable)
+   * Fetches 17 CFR Parts 229 and 240, filtering to SOX-relevant sections
    */
   async *fetchSections(): AsyncGenerator<Section[]> {
-    // Placeholder: no sections fetched in MVP
-    // Future implementation will:
-    // 1. Authenticate with regulations.gov API using API key
-    // 2. Query for SOX-related SEC rules and regulations
-    // 3. Fetch documents by docket ID (e.g., SEC Section 404 implementing rules)
-    // 4. Parse document structure (typically PDF or HTML)
-    // 5. Yield sections in batches
-    // 6. Extract references to SOX statute sections
+    console.log('Fetching SOX sections from eCFR (Title 17)...');
 
-    // Note: Will require PDF parsing for many SEC regulations
-    return;
+    // Key SOX-related sections:
+    // - 17 CFR 229.308 (Item 308: Internal control over financial reporting)
+    // - 17 CFR 240.13a-15 (Controls and procedures)
+    // - 17 CFR 240.15d-15 (Controls and procedures)
+    // - 17 CFR 240.13a-14 (Certifications)
+    // - 17 CFR 240.15d-14 (Certifications)
+
+    const relevantSections = [
+      '229.308',
+      '240.13a-15',
+      '240.15d-15',
+      '240.13a-14',
+      '240.15d-14',
+    ];
+
+    // Fetch from eCFR adapter
+    for await (const sectionBatch of this.ecfrAdapter.fetchSections()) {
+      // Filter to SOX-relevant sections
+      const filtered = sectionBatch.filter(section =>
+        relevantSections.some(relevant => section.sectionNumber.includes(relevant))
+      );
+
+      if (filtered.length > 0) {
+        yield filtered;
+      }
+    }
   }
 
   /**
    * Check for updates since last fetch
    *
-   * PLACEHOLDER: Always returns no changes
-   * TODO: Query regulations.gov API for document modification dates
-   * API supports lastModifiedDate filtering
+   * Delegates to eCFR adapter for update checking
    */
   async checkForUpdates(lastFetched: Date): Promise<UpdateStatus> {
-    // Placeholder: no update checking in MVP
-    // Future implementation will:
-    // 1. Query regulations.gov API with lastModifiedDate filter
-    // 2. Check for new SOX-related rules or amendments
-    // 3. Compare document versions and checksums
-    // 4. Return detailed change information
-
-    // Note: SOX statute amendments are rare, but SEC implementing rules update periodically
-    return {
-      hasChanges: false,
-      lastModified: new Date(),
-      changes: [],
-      sectionsAdded: 0,
-      sectionsModified: 0,
-    };
+    return this.ecfrAdapter.checkForUpdates(lastFetched);
   }
 
   /**
    * Extract definitions from SOX sections
    *
-   * PLACEHOLDER: Returns empty array
-   * TODO: Parse definition sections from SOX statute and SEC rules
+   * Future enhancement: Parse definitions from SEC regulations
    */
   async extractDefinitions(): Promise<Definition[]> {
-    // Placeholder: no definition extraction in MVP
-    // Future implementation will:
-    // 1. Identify definition sections in SOX statute
-    // 2. Extract definitions from SEC implementing rules
-    // 3. Handle definitions scattered across multiple documents
-    // 4. Link terms to source sections
-    return [];
+    return this.ecfrAdapter.extractDefinitions();
   }
 }
 
 /**
  * Factory function to create SOX adapter
  */
-export function createSoxAdapter(): RegulationsGovAdapter {
-  // Future: may need specific docket ID for SOX Section 404 rules
-  return new RegulationsGovAdapter('SOX');
+export function createSoxAdapter(): SoxAdapter {
+  return new SoxAdapter('SOX');
 }
