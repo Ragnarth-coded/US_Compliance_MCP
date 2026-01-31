@@ -580,13 +580,14 @@ So we're open-sourcing it. Navigating federal and state regulations shouldn't re
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or pull request for:
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on:
 
-- Bug fixes
-- New regulation support
-- Additional control framework mappings
-- Documentation improvements
-- Test coverage enhancements
+- Development setup
+- Pull request process
+- Commit message conventions
+- Code style guidelines
+
+By participating in this project, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ---
 
