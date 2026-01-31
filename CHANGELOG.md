@@ -4,6 +4,23 @@ All notable changes to the US Compliance MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.3] - 2026-01-31
+
+### Added
+- CODE_OF_CONDUCT.md based on Contributor Covenant
+- CONTRIBUTING.md with development setup and guidelines
+- GitHub issue templates (bug report, feature request)
+- Pull request template
+
+### Changed
+- Updated README contributing section to reference new community docs
+
+## [1.2.2] - 2026-01-31
+
+### Changed
+- Updated mcpName for MCP Registry compatibility
+- Security fixes for code scanning vulnerabilities
+
 ## [1.2.1] - 2026-01-31
 
 ### Added
