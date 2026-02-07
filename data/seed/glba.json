@@ -1,0 +1,57 @@
+{
+  "regulation": {
+    "id": "GLBA",
+    "full_name": "Gramm-Leach-Bliley Act - Safeguards Rule",
+    "citation": "16 CFR Part 314",
+    "effective_date": "2003-05-23",
+    "last_amended": "2023-06-09",
+    "jurisdiction": "federal",
+    "regulation_type": "regulation"
+  },
+  "source": {
+    "official_url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-314",
+    "publisher": "Federal Trade Commission",
+    "title": "Standards for Safeguarding Customer Information",
+    "last_verified": "2026-02-07",
+    "verification_method": "Extracted from 16 CFR Part 314 (FTC Safeguards Rule)",
+    "disclaimer": "This includes provisions from the FTC's Safeguards Rule under the Gramm-Leach-Bliley Act. Financial institutions should also consult regulations from their primary federal regulator (OCC, FDIC, Federal Reserve, NCUA, SEC, etc.). For complete compliance guidance, consult FTC.gov and legal counsel."
+  },
+  "sections": [
+    {
+      "sectionNumber": "314.1",
+      "title": "Purpose and scope",
+      "text": "This part implements sections 501 and 505(b)(2) of the Gramm-Leach-Bliley Act, 15 U.S.C. 6801 and 6805(b)(2). It sets forth standards for developing, implementing, and maintaining reasonable administrative, technical, and physical safeguards to protect the security, confidentiality, and integrity of customer information. This part applies to the handling of customer information by all financial institutions over which the Federal Trade Commission has jurisdiction. For purposes of this part, financial institution means any institution the business of which is engaging in an activity that is financial in nature or incidental to such financial activities as described in section 4(k) of the Bank Holding Company Act of 1956.",
+      "chapter": "Standards for Safeguarding Customer Information"
+    },
+    {
+      "sectionNumber": "314.2",
+      "title": "Definitions",
+      "text": "Except as modified by this part or unless the context otherwise requires, the terms used in this part have the same meaning as set forth in the Commission's rule governing the Privacy of Consumer Financial Information, 16 CFR part 313. Affiliate means any company that controls, is controlled by, or is under common control with another company. Authorized user means a person that you have determined is entitled to access your information systems and the customer information they maintain. Board of directors includes the board of directors of a corporation; the general partner or partners of a general partnership, limited partnership, or limited liability partnership; the manager or managing member of a limited liability company; the member or members who have responsibility and authority for the management of a nonprofit corporation or similar organization; or another group with overall responsibility for the management and strategic direction of a financial institution. Customer information means any record containing nonpublic personal information about a customer of a financial institution, whether in paper, electronic, or other form, that is handled or maintained by or on behalf of you or your affiliates. Encryption means the transformation of data into a form that results in a low probability of assigning meaning without the use of a protective process or key. Information security program means the administrative, technical, or physical safeguards you use to access, collect, distribute, process, protect, store, use, transmit, dispose of, or otherwise handle customer information. Multi-factor authentication means authentication through verification of at least two of the following types of authentication factors: (1) Knowledge factors, such as a password; (2) Possession factors, such as a token; or (3) Inherence factors, such as biometric characteristics. Qualified individual means an individual or individuals with the knowledge, experience, and ability necessary to assess your security risks and your information security program. Service provider means any person or entity that receives, maintains, processes, or otherwise is permitted access to customer information through its provision of services directly to a financial institution. You means a financial institution as defined in this section.",
+      "chapter": "Standards for Safeguarding Customer Information"
+    },
+    {
+      "sectionNumber": "314.3",
+      "title": "Standards for safeguarding customer information",
+      "text": "You must develop, implement, and maintain a comprehensive information security program that is written in one or more readily accessible parts and contains administrative, technical, and physical safeguards that are appropriate to your size and complexity, the nature and scope of your activities, and the sensitivity of any customer information at issue. Such safeguards must include the elements set forth in § 314.4 and must be reasonably designed to achieve the objectives of this part.",
+      "chapter": "Standards for Safeguarding Customer Information"
+    },
+    {
+      "sectionNumber": "314.4",
+      "title": "Elements",
+      "text": "In order to develop, implement, and maintain your information security program, you must: (a) Designate a qualified individual to oversee and implement your information security program. The qualified individual may be employed by you or may be employed by a service provider. You must designate and identify one or more qualified individuals responsible for overseeing, implementing, and enforcing your information security program. (b) Conduct a risk assessment: (1) Identify reasonably foreseeable internal and external risks to the security, confidentiality, and integrity of customer information that could result in the unauthorized disclosure, misuse, alteration, destruction or other compromise of such information; and (2) Assess the sufficiency of any safeguards in place to control the identified risks. (c) Design and implement safeguards to control the risks you identify through risk assessment, and regularly test or otherwise monitor the effectiveness of the safeguards' key controls, systems, and procedures, including: (1) Training your personnel, as appropriate, to implement your information security program; (2) Developing, implementing, and maintaining, as appropriate for your size and complexity, multi-factor authentication for any individual accessing any information system, unless your qualified individual has approved in writing the use of reasonably equivalent or more secure access controls; (3) Developing secure methods of disposing of customer information, as appropriate for your size and complexity; (4) Maintaining secure and resilient customer information systems, as appropriate for your size and complexity; (5) Conducting, as appropriate for your size and complexity, regular monitoring and testing of your information security program, including: (i) Continuous monitoring and logging of the activity of your information systems, or other reasonably equivalent measures, to detect unauthorized access to or use of customer information; and (ii) Conducting, at least annually, testing of your information security program designed to assess its effectiveness and identify any weaknesses in the safeguards required by this section, including vulnerability assessments or penetration testing; (6) Developing, implementing, and maintaining procedures for detecting, preventing, and responding to attacks, intrusions, or other systems failures; (7) Developing and implementing a response program designed to respond to, and recover from, any such security event materially affecting the confidentiality, integrity, or availability of customer information in your control, which program must include procedures to: (i) Assess the nature and scope of the event and identify what customer information systems and types of customer information have been accessed or misused; (ii) Take appropriate steps to contain and control the event to prevent further unauthorized access to or misuse of customer information; (iii) Notify your Board of Directors, or an appropriate committee thereof, or senior officer responsible for your information security program, immediately after becoming aware of an incident involving unauthorized access to or use of customer information; and (iv) Provide notice to each affected customer as soon as possible in the event that misuse of customer information has occurred or is reasonably possible. (d) Oversee service providers: (1) Exercise due diligence in selecting your service providers; (2) Require your service providers by contract to implement and maintain appropriate safeguards; and (3) Where indicated by your risk assessment, periodically reassess your service providers. (e) Evaluate and adjust: (1) Evaluate and adjust your information security program in light of the results of the testing and monitoring required by paragraph (c)(5) of this section; any material changes to your operations or business arrangements; or any other circumstances that you know or have reason to know may have a material impact on your information security program. (f) Report to the Board: Report at least annually to the Board of Directors, or governing body with similar oversight and authority, on the overall status of the information security program and your compliance with this part. You may prepare a separate report or incorporate such report into another report, such as an annual compliance report.",
+      "chapter": "Standards for Safeguarding Customer Information"
+    },
+    {
+      "sectionNumber": "314.5",
+      "title": "Effective date",
+      "text": "Except as otherwise provided in this section, this part is effective May 23, 2003. The requirement in § 314.4(c)(2) to develop, implement, and maintain multi-factor authentication or reasonably equivalent or more secure access controls applies beginning on such date as a financial institution has 5,000 or more consumer or customer accounts. The requirement in § 314.4(c)(4) to maintain secure and resilient customer information systems applies beginning December 9, 2022. The requirement in § 314.4(c)(5) to conduct continuous monitoring and annual testing applies beginning June 9, 2023. The requirement in § 314.4(f) to report to the Board of Directors applies beginning June 9, 2023.",
+      "chapter": "Standards for Safeguarding Customer Information"
+    },
+    {
+      "sectionNumber": "314.6",
+      "title": "Service provider arrangements",
+      "text": "You remain fully responsible for compliance with this part even when you use a service provider to perform services related to customer information. You must exercise appropriate due diligence in selecting your service providers. Your contract with your service provider must require your service provider to implement and maintain appropriate safeguards for the customer information at issue. Where indicated by your risk assessment, you must periodically reassess your service providers to confirm that the service provider maintains appropriate safeguards.",
+      "chapter": "Standards for Safeguarding Customer Information"
+    }
+  ]
+}

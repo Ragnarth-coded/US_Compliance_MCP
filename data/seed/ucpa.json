@@ -1,0 +1,56 @@
+{
+  "regulation": {
+    "id": "UCPA",
+    "full_name": "Utah Consumer Privacy Act",
+    "citation": "Utah Code §§ 13-61-101 to 13-61-404",
+    "effective_date": "2023-12-31",
+    "jurisdiction": "utah",
+    "regulation_type": "statute"
+  },
+  "source": {
+    "official_url": "https://le.utah.gov/xcode/Title13/Chapter61/13-61.html",
+    "publisher": "Utah State Legislature",
+    "title": "Consumer Privacy Act",
+    "last_verified": "2026-02-07",
+    "verification_method": "Extracted from Utah Code Title 13 Chapter 61",
+    "disclaimer": "Consult Utah Attorney General for enforcement guidance."
+  },
+  "sections": [
+    {
+      "sectionNumber": "13-61-101",
+      "title": "Definitions",
+      "text": "Consumer means individual residing in Utah acting in individual or household context. Controller means person determining purposes and means of processing personal data. Personal data means information linked or linkable to identified or identifiable individual. Sensitive data means personal data revealing racial or ethnic origin, religious beliefs, mental or physical health diagnosis, sex life, sexual orientation, citizenship status, genetic or biometric data, or precise geolocation.",
+      "chapter": "General Provisions"
+    },
+    {
+      "sectionNumber": "13-61-201",
+      "title": "Applicability",
+      "text": "Applies to persons conducting business in Utah or targeting products/services to Utah residents, that during calendar year: (1) Control or process personal data of at least 100,000 consumers; or (2) Control or process personal data of at least 25,000 consumers and derive over 50% of gross revenue from sale of personal data.",
+      "chapter": "Applicability"
+    },
+    {
+      "sectionNumber": "13-61-202",
+      "title": "Consumer rights",
+      "text": "Consumers have rights to: (1) Confirm whether controller is processing personal data and access such data; (2) Delete personal data; (3) Obtain copy in portable format; (4) Opt out of processing for targeted advertising or sale of personal data.",
+      "chapter": "Consumer Rights"
+    },
+    {
+      "sectionNumber": "13-61-301",
+      "title": "Controller responsibilities",
+      "text": "Controllers must: (1) Limit collection to adequate, relevant, and reasonably necessary; (2) Not process for incompatible purposes without consent; (3) Establish reasonable security practices; (4) Provide privacy notice; (5) Respond to consumer requests within 45 days.",
+      "chapter": "Controller Responsibilities"
+    },
+    {
+      "sectionNumber": "13-61-302",
+      "title": "Sensitive data consent",
+      "text": "Controller shall not process sensitive data without consumer consent. Processing must not violate laws prohibiting unlawful discrimination.",
+      "chapter": "Sensitive Data"
+    },
+    {
+      "sectionNumber": "13-61-401",
+      "title": "Enforcement",
+      "text": "Exclusive enforcement by Division of Consumer Protection within Department of Commerce. No private right of action. Division must provide 30 days notice and opportunity to cure. Civil penalties up to $7,500 per violation.",
+      "chapter": "Enforcement"
+    }
+  ]
+}

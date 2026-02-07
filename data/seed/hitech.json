@@ -1,0 +1,69 @@
+{
+  "regulation": {
+    "id": "HITECH",
+    "full_name": "Health Information Technology for Economic and Clinical Health Act",
+    "citation": "42 U.S.C. §§ 17921-17954; 45 CFR Parts 160, 164",
+    "effective_date": "2009-02-17",
+    "last_amended": "2013-09-23",
+    "jurisdiction": "federal",
+    "regulation_type": "statute"
+  },
+  "source": {
+    "official_url": "https://www.hhs.gov/hipaa/for-professionals/special-topics/hitech-act-enforcement-interim-final-rule/index.html",
+    "publisher": "U.S. Department of Health and Human Services",
+    "title": "HITECH Act - Health Information Technology",
+    "last_verified": "2026-02-07",
+    "verification_method": "Extracted from HITECH Act provisions and implementing regulations",
+    "disclaimer": "HITECH strengthened HIPAA. Consult HHS.gov for complete compliance guidance."
+  },
+  "sections": [
+    {
+      "sectionNumber": "13400",
+      "title": "Definitions",
+      "text": "Breach means unauthorized acquisition, access, use, or disclosure of protected health information which compromises security or privacy, except for certain exclusions. Business associate has same meaning as in HIPAA. Covered entity has same meaning as in HIPAA. Personal health record means electronic record of health-related information on individual maintained by or for the individual. Unsecured protected health information means protected health information not secured through use of technology or methodology specified by HHS Secretary.",
+      "chapter": "Definitions"
+    },
+    {
+      "sectionNumber": "13401",
+      "title": "Application of HIPAA Security Rule to business associates",
+      "text": "Business associates of covered entities must comply with applicable requirements under HIPAA Security Rule with respect to electronic protected health information. Business associates are subject to civil and criminal penalties for violations in same manner as covered entities.",
+      "chapter": "Privacy and Security of Electronic Health Information"
+    },
+    {
+      "sectionNumber": "13402",
+      "title": "Notification in case of breach",
+      "text": "Covered entity that accesses, maintains, retains, modifies, records, stores, destroys, or otherwise holds protected health information must notify each individual whose protected health information has been, or is reasonably believed to have been, accessed, acquired, or disclosed as result of breach. Notification must be provided without unreasonable delay and in no case later than 60 calendar days after discovery of breach. For breaches involving 500 or more individuals, must notify HHS Secretary immediately. For breaches involving more than 500 residents of State, must notify prominent media outlets.",
+      "chapter": "Breach Notification"
+    },
+    {
+      "sectionNumber": "13404",
+      "title": "Application of privacy provisions to business associates",
+      "text": "Business associates must comply with applicable provisions of HIPAA Privacy Rule. Business associates are subject to civil monetary penalties for violations. HHS Secretary has direct enforcement authority over business associates.",
+      "chapter": "Privacy and Security of Electronic Health Information"
+    },
+    {
+      "sectionNumber": "13405",
+      "title": "Restrictions on certain disclosures",
+      "text": "Individual has right to request covered entity restrict disclosure of protected health information to health plan concerning treatment for which individual has paid out of pocket in full. If individual requests restriction, covered entity must comply except where disclosure is required by law.",
+      "chapter": "Privacy and Security of Electronic Health Information"
+    },
+    {
+      "sectionNumber": "13407",
+      "title": "Temporary breach notification requirement for vendors of personal health records",
+      "text": "Vendors of personal health records and related entities must notify consumers and Federal Trade Commission following discovery of breach of security of unsecured personally identifiable health information.",
+      "chapter": "Breach Notification"
+    },
+    {
+      "sectionNumber": "13410",
+      "title": "Enforcement",
+      "text": "HHS Secretary shall impose civil monetary penalty for violations. Penalties are tiered based on level of culpability: (1) Violation due to reasonable cause: $100-$50,000 per violation; (2) Violation due to willful neglect but corrected: $10,000-$50,000 per violation; (3) Violation due to willful neglect not corrected: minimum $50,000 per violation. Annual cap of $1.5 million for violations of identical provision.",
+      "chapter": "Enforcement"
+    },
+    {
+      "sectionNumber": "13411",
+      "title": "Audits",
+      "text": "HHS Secretary shall provide for periodic audits to ensure covered entities and business associates comply with applicable requirements under HIPAA Privacy and Security Rules and HITECH breach notification requirements.",
+      "chapter": "Enforcement"
+    }
+  ]
+}

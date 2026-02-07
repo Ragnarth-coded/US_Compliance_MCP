@@ -1,0 +1,51 @@
+{
+  "regulation": {
+    "id": "COPPA",
+    "full_name": "Children's Online Privacy Protection Act",
+    "citation": "16 CFR Part 312",
+    "effective_date": "2000-04-21",
+    "last_amended": "2013-07-01",
+    "jurisdiction": "federal",
+    "regulation_type": "regulation"
+  },
+  "source": {
+    "official_url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312",
+    "publisher": "Federal Trade Commission",
+    "title": "Children's Online Privacy Protection Rule",
+    "last_verified": "2026-02-07",
+    "verification_method": "Extracted from 16 CFR Part 312",
+    "disclaimer": "Consult FTC.gov for complete compliance guidance."
+  },
+  "sections": [
+    {
+      "sectionNumber": "312.2",
+      "title": "Definitions",
+      "text": "Child means an individual under the age of 13. Operator means any person who operates a website or online service directed to children, or any person who has actual knowledge that it is collecting personal information from a child. Personal information means individually identifiable information about an individual collected online, including: (A) First and last name; (B) Home or physical address; (C) Email address; (D) Telephone number; (E) Social Security number; (F) Geolocation information; (G) Photograph, video, or audio file containing a child's image or voice; (H) Screen or user name; (I) Persistent identifier; (J) Any other information concerning the child or parent that is combined with such identifier. Verifiable parental consent means any reasonable effort to ensure that a parent authorizes collection before any personal information is collected from a child.",
+      "chapter": "Children's Online Privacy Protection Rule"
+    },
+    {
+      "sectionNumber": "312.3",
+      "title": "Parental consent requirements",
+      "text": "An operator must obtain verifiable parental consent before any collection of personal information from children. Operators must provide clear notice of information practices to parents. Operators must establish reasonable procedures to protect confidentiality and security of personal information collected from children.",
+      "chapter": "Children's Online Privacy Protection Rule"
+    },
+    {
+      "sectionNumber": "312.4",
+      "title": "Notice requirements",
+      "text": "Operators must post privacy policy that clearly states: (1) Types of personal information collected; (2) How information is used; (3) Disclosure practices; (4) Parental rights to review and delete information; (5) Contact information for operator.",
+      "chapter": "Children's Online Privacy Protection Rule"
+    },
+    {
+      "sectionNumber": "312.5",
+      "title": "Parental rights",
+      "text": "Parents have the right to: (1) Review personal information collected from their child; (2) Direct operator to delete such information; (3) Refuse to permit further collection or use. Operators must not condition participation on disclosure of more information than reasonably necessary.",
+      "chapter": "Children's Online Privacy Protection Rule"
+    },
+    {
+      "sectionNumber": "312.8",
+      "title": "Data security",
+      "text": "Operators must establish and maintain reasonable procedures to protect confidentiality, security, and integrity of personal information collected from children. This includes protection against unauthorized access, use, or disclosure.",
+      "chapter": "Children's Online Privacy Protection Rule"
+    }
+  ]
+}

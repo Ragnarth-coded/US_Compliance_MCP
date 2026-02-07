@@ -1,0 +1,50 @@
+{
+  "regulation": {
+    "id": "FDA_CFR_11",
+    "full_name": "FDA 21 CFR Part 11 - Electronic Records and Signatures",
+    "citation": "21 CFR Part 11",
+    "effective_date": "1997-08-20",
+    "jurisdiction": "federal",
+    "regulation_type": "regulation"
+  },
+  "source": {
+    "official_url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11",
+    "publisher": "U.S. Food and Drug Administration",
+    "title": "Electronic Records; Electronic Signatures",
+    "last_verified": "2026-02-07",
+    "verification_method": "Extracted from 21 CFR Part 11",
+    "disclaimer": "Pharmaceutical and medical device companies must consult FDA.gov for complete compliance guidance."
+  },
+  "sections": [
+    {
+      "sectionNumber": "11.10",
+      "title": "Controls for closed systems",
+      "text": "Persons using closed systems must employ procedures and controls designed to ensure authenticity, integrity, and confidentiality of electronic records. Requirements include: (a) Validation of systems; (b) Audit trails; (c) Operational system checks; (d) Authority checks; (e) Device checks; (f) Education and training; (g) Accountability; (h) Documentation controls; (i) Copying controls.",
+      "chapter": "Electronic Records"
+    },
+    {
+      "sectionNumber": "11.30",
+      "title": "Controls for open systems",
+      "text": "Persons using open systems must employ additional procedures and controls including document encryption and use of digital signatures to ensure authenticity, integrity, and confidentiality of electronic records.",
+      "chapter": "Electronic Records"
+    },
+    {
+      "sectionNumber": "11.50",
+      "title": "Signature manifestations",
+      "text": "Signed electronic records must contain information associated with the signing including: (a) Printed name of signer; (b) Date and time when signature was executed; (c) Meaning of signature.",
+      "chapter": "Electronic Signatures"
+    },
+    {
+      "sectionNumber": "11.70",
+      "title": "Signature/record linking",
+      "text": "Electronic signatures and handwritten signatures executed to electronic records shall be linked to their respective electronic records to ensure that signatures cannot be excised, copied, or transferred to falsify an electronic record.",
+      "chapter": "Electronic Signatures"
+    },
+    {
+      "sectionNumber": "11.100",
+      "title": "General requirements for electronic signatures",
+      "text": "Each electronic signature shall be unique to one individual and shall not be reused by, or reassigned to, anyone else. Before organization establishes, assigns, or certifies electronic signatures, it shall verify the identity of the individual.",
+      "chapter": "Electronic Signatures - General Requirements"
+    }
+  ]
+}

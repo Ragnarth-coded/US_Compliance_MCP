@@ -1,0 +1,62 @@
+{
+  "regulation": {
+    "id": "VCDPA",
+    "full_name": "Virginia Consumer Data Protection Act",
+    "citation": "Va. Code Ann. §§ 59.1-575 to 59.1-585",
+    "effective_date": "2023-01-01",
+    "jurisdiction": "virginia",
+    "regulation_type": "statute"
+  },
+  "source": {
+    "official_url": "https://law.lis.virginia.gov/vacode/title59.1/chapter53/",
+    "publisher": "Virginia General Assembly",
+    "title": "Virginia Consumer Data Protection Act",
+    "last_verified": "2026-02-07",
+    "verification_method": "Extracted from Virginia Code Title 59.1 Chapter 53",
+    "disclaimer": "Consult Virginia Attorney General for enforcement guidance."
+  },
+  "sections": [
+    {
+      "sectionNumber": "59.1-576",
+      "title": "Definitions",
+      "text": "Consumer means natural person residing in Virginia acting in individual or household context. Controller means person that determines purposes and means of processing personal data. Personal data means information linked or linkable to identified or identifiable natural person. Processing means operation performed on personal data. Sensitive data means personal data revealing racial or ethnic origin, religious beliefs, mental or physical health diagnosis, sexual orientation, citizenship status, genetic or biometric data, or precise geolocation data.",
+      "chapter": "Definitions"
+    },
+    {
+      "sectionNumber": "59.1-577",
+      "title": "Applicability",
+      "text": "Applies to persons conducting business in Virginia or targeting products/services to Virginia residents, that during calendar year: (1) Control or process personal data of at least 100,000 consumers; or (2) Control or process personal data of at least 25,000 consumers and derive over 50% of gross revenue from sale of personal data.",
+      "chapter": "Scope"
+    },
+    {
+      "sectionNumber": "59.1-578",
+      "title": "Consumer rights",
+      "text": "Consumers have rights to: (1) Confirm whether controller is processing personal data and access such data; (2) Correct inaccuracies in personal data; (3) Delete personal data; (4) Obtain copy of personal data in portable format; (5) Opt out of processing for targeted advertising, sale of personal data, or profiling in furtherance of decisions that produce legal effects.",
+      "chapter": "Consumer Rights"
+    },
+    {
+      "sectionNumber": "59.1-579",
+      "title": "Controller responsibilities",
+      "text": "Controllers must: (1) Limit collection to adequate, relevant, and reasonably necessary; (2) Not process for incompatible purposes without consent; (3) Establish reasonable security practices; (4) Not discriminate against consumers exercising rights; (5) Provide privacy notice disclosing categories collected, purposes, consumer rights, and categories of third parties.",
+      "chapter": "Controller Obligations"
+    },
+    {
+      "sectionNumber": "59.1-580",
+      "title": "Sensitive data and consent",
+      "text": "Controller shall not process sensitive data without consumer consent. For consumers ages 13-16, controllers must obtain consent from consumer. Processing must not violate laws prohibiting unlawful discrimination.",
+      "chapter": "Sensitive Data"
+    },
+    {
+      "sectionNumber": "59.1-581",
+      "title": "Data protection assessments",
+      "text": "Controllers must conduct data protection assessments for: (1) Targeted advertising; (2) Sale of personal data; (3) Profiling with legal effects; (4) Processing of sensitive data; (5) Processing presenting heightened risk of harm. Assessments must identify and weigh benefits against risks to consumer rights.",
+      "chapter": "Data Protection Assessments"
+    },
+    {
+      "sectionNumber": "59.1-584",
+      "title": "Enforcement",
+      "text": "Exclusive enforcement by Attorney General. No private right of action. Attorney General must provide 30 days notice and opportunity to cure before initiating action. Civil penalties up to $7,500 per violation.",
+      "chapter": "Enforcement"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "regulation": {
+    "id": "CCPA",
+    "full_name": "California Consumer Privacy Act",
+    "citation": "Cal. Civ. Code §§ 1798.100-1798.199",
+    "effective_date": "2020-01-01",
+    "last_amended": "2023-01-01",
+    "jurisdiction": "california",
+    "regulation_type": "statute"
+  },
+  "source": {
+    "official_url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5",
+    "publisher": "California Legislature",
+    "title": "California Consumer Privacy Act of 2018",
+    "last_verified": "2026-02-07",
+    "verification_method": "Extracted from California Civil Code Title 1.81.5",
+    "disclaimer": "CCPA was amended by CPRA (Prop 24) in 2020. This includes base CCPA text. Consult oag.ca.gov for current enforcement guidance."
+  },
+  "sections": [
+    {
+      "sectionNumber": "1798.100",
+      "title": "Consumer's Right to Know",
+      "text": "A consumer shall have the right to request that a business disclose to the consumer: (1) Categories of personal information collected; (2) Categories of sources from which personal information is collected; (3) Business purpose for collecting or selling personal information; (4) Categories of third parties with whom the business shares personal information; (5) Specific pieces of personal information collected.",
+      "chapter": "Consumer Rights"
+    },
+    {
+      "sectionNumber": "1798.105",
+      "title": "Consumer's Right to Delete",
+      "text": "A consumer shall have the right to request deletion of personal information collected from the consumer. Business must delete consumer's personal information from its records and direct service providers to delete, subject to certain exceptions.",
+      "chapter": "Consumer Rights"
+    },
+    {
+      "sectionNumber": "1798.110",
+      "title": "Right to Know Disclosure Requirements",
+      "text": "Business must disclose specific information about data collection practices including categories collected, sources, business purposes, and third-party sharing in the 12 months preceding request.",
+      "chapter": "Consumer Rights"
+    },
+    {
+      "sectionNumber": "1798.115",
+      "title": "Right to Know About Sale",
+      "text": "Consumer has right to request disclosure of: (1) Categories of personal information sold; (2) Categories of third parties to whom information was sold.",
+      "chapter": "Consumer Rights"
+    },
+    {
+      "sectionNumber": "1798.120",
+      "title": "Right to Opt-Out of Sale",
+      "text": "Consumers have right to opt out of sale of personal information. Business must provide \"Do Not Sell My Personal Information\" link on homepage.",
+      "chapter": "Consumer Rights"
+    },
+    {
+      "sectionNumber": "1798.130",
+      "title": "Notice and Disclosure Requirements",
+      "text": "Business must provide notice at collection and privacy policy disclosing: categories collected, purposes, consumer rights, contact information. Must provide two or more methods for submitting requests.",
+      "chapter": "Business Obligations"
+    },
+    {
+      "sectionNumber": "1798.135",
+      "title": "Opt-Out and Opt-In Rights",
+      "text": "Business must provide clear and conspicuous link on homepage titled \"Do Not Sell My Personal Information.\" For consumers under 16, affirmative opt-in required. Under 13, parental consent required.",
+      "chapter": "Business Obligations"
+    },
+    {
+      "sectionNumber": "1798.140",
+      "title": "Definitions",
+      "text": "Personal information means information that identifies, relates to, describes, is capable of being associated with, or could reasonably be linked, directly or indirectly, with a particular consumer or household. Business means for-profit entity that collects personal information, determines purposes and means of processing, and meets revenue or data volume thresholds. Sale means selling, renting, releasing, disclosing, disseminating, making available, transferring, or otherwise communicating personal information to another business or third party for monetary or other valuable consideration.",
+      "chapter": "Definitions"
+    },
+    {
+      "sectionNumber": "1798.150",
+      "title": "Data Breach - Private Right of Action",
+      "text": "Consumers whose nonencrypted and nonredacted personal information is subject to unauthorized access and exfiltration, theft, or disclosure may institute civil action for statutory damages $100-$750 per consumer per incident or actual damages, whichever is greater.",
+      "chapter": "Enforcement"
+    },
+    {
+      "sectionNumber": "1798.155",
+      "title": "Administrative Enforcement",
+      "text": "Attorney General may bring civil action for violation. Before initiating action, must provide 30 days notice and opportunity to cure. Civil penalties up to $2,500 per violation or $7,500 per intentional violation.",
+      "chapter": "Enforcement"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "regulation": {
+    "id": "EPA_RMP",
+    "full_name": "EPA Risk Management Plan Rule",
+    "citation": "40 CFR Part 68",
+    "effective_date": "1996-06-20",
+    "last_amended": "2019-01-13",
+    "jurisdiction": "federal",
+    "regulation_type": "regulation"
+  },
+  "source": {
+    "official_url": "https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-68",
+    "publisher": "U.S. Environmental Protection Agency",
+    "title": "Chemical Accident Prevention Provisions",
+    "last_verified": "2026-02-07",
+    "verification_method": "Extracted from 40 CFR Part 68 (RMP Rule)",
+    "disclaimer": "Facilities handling regulated substances above threshold quantities must comply. Consult EPA.gov for complete guidance."
+  },
+  "sections": [
+    {
+      "sectionNumber": "68.10",
+      "title": "Applicability",
+      "text": "Owner or operator of stationary source that has more than threshold quantity of regulated substance in process must comply with requirements of this part. Regulated substances include toxic substances and flammable substances listed in § 68.130. Stationary source means buildings, structures, equipment, installations, or substance-emitting stationary activities at single site or on contiguous sites.",
+      "chapter": "General"
+    },
+    {
+      "sectionNumber": "68.12",
+      "title": "General requirements",
+      "text": "Owner or operator must: (a) Prepare and implement Risk Management Plan meeting requirements of subpart G; (b) Submit Risk Management Plan to EPA by date specified in § 68.10; (c) Update and resubmit RMP as specified in § 68.190; (d) Implement emergency response program as required by subpart E; (e) Comply with prevention requirements in subparts C or D.",
+      "chapter": "General"
+    },
+    {
+      "sectionNumber": "68.50",
+      "title": "Hazard assessment",
+      "text": "Owner or operator shall conduct hazard assessment before first submission of Risk Management Plan. Hazard assessment shall include: (a) Process hazard analysis for each covered process; (b) Worst-case release scenario analysis for each covered process; (c) Alternative release scenario analysis. Owner or operator shall review and update hazard assessment at least every five years.",
+      "chapter": "Hazard Assessment"
+    },
+    {
+      "sectionNumber": "68.65",
+      "title": "Process safety management",
+      "text": "For Program 3 processes, owner or operator shall comply with process safety management requirements including: (a) Process safety information; (b) Process hazard analysis; (c) Operating procedures; (d) Training; (e) Mechanical integrity; (f) Management of change; (g) Pre-startup review; (h) Compliance audits; (i) Incident investigation; (j) Employee participation; (k) Hot work permits; (l) Contractors.",
+      "chapter": "Program 3 Prevention Program"
+    },
+    {
+      "sectionNumber": "68.79",
+      "title": "Operating procedures",
+      "text": "Owner or operator shall develop and implement written operating procedures that provide clear instructions for safely conducting activities involved in each covered process consistent with process safety information. Procedures shall address: (a) Steps for each operating phase; (b) Operating limits; (c) Safety and health considerations; (d) Safety systems and functions; (e) Procedures shall be readily accessible to employees.",
+      "chapter": "Program 3 Prevention Program"
+    },
+    {
+      "sectionNumber": "68.81",
+      "title": "Training",
+      "text": "Owner or operator shall ensure that each employee presently involved in operating process and each employee newly assigned to covered process have been trained in overview of process and operating procedures. Training shall include emphasis on specific safety and health hazards, emergency operations, and safe work practices. Owner or operator shall document that training has been conducted and completed. Refresher training shall be provided at least every three years.",
+      "chapter": "Program 3 Prevention Program"
+    },
+    {
+      "sectionNumber": "68.95",
+      "title": "Emergency response program",
+      "text": "Owner or operator shall develop and implement emergency response program for purpose of protecting public health and environment. Program elements shall include: (a) Emergency response plan that includes procedures for informing public and emergency response agencies; (b) Procedures for use of emergency response equipment; (c) Training for employees in relevant procedures; (d) Procedures for reviewing and updating emergency response plan to reflect changes at stationary source.",
+      "chapter": "Emergency Response"
+    },
+    {
+      "sectionNumber": "68.150",
+      "title": "Risk Management Plan",
+      "text": "Owner or operator shall prepare Risk Management Plan that includes: (a) Registration of stationary source; (b) Offsite consequence analysis; (c) Five-year accident history; (d) Prevention program; (e) Emergency response program; (f) Certification. RMP must be submitted to EPA in format specified by EPA and made available to public.",
+      "chapter": "Risk Management Plan"
+    },
+    {
+      "sectionNumber": "68.190",
+      "title": "Updates",
+      "text": "Owner or operator shall review and update RMP as specified in this section: (a) At least once every five years from date of initial submission; (b) Whenever stationary source changes result in: new regulated substances above threshold, new processes, changes in offsite consequence analysis, or other changes requiring RMP modification; (c) Within six months after making change requiring RMP modification.",
+      "chapter": "Risk Management Plan"
+    }
+  ]
+}
