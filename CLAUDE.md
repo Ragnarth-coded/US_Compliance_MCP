@@ -47,17 +47,33 @@ npx @ansvar/us-regulations-mcp
 ```
 US_Compliance_MCP/
 ├── src/
-│   ├── index.ts               # MCP server entry point
-│   ├── database/              # SQLite database layer
-│   ├── tools/                 # MCP tool implementations
-│   └── data/
-│       └── regulations.db     # Pre-built database (~10MB)
-├── data/seed/                 # Source JSON files
-│   ├── hipaa.json
-│   ├── ccpa.json
-│   └── ... (13 more)
-├── scripts/                   # Ingestion scripts
-└── tests/                     # Test suite
+│   ├── index.ts               # MCP server entry point (stdio transport)
+│   ├── http-server.ts         # HTTP/SSE transport
+│   ├── rest-server.ts         # REST API transport
+│   └── tools/
+│       ├── registry.ts        # Tool definitions (single source of truth)
+│       ├── search.ts          # FTS5 search with BM25
+│       ├── section.ts         # Section retrieval
+│       ├── list.ts            # Regulation listing/structure
+│       ├── compare.ts         # Cross-regulation comparison
+│       ├── map.ts             # Control framework mappings
+│       ├── applicability.ts   # Sector applicability
+│       ├── definitions.ts     # Legal term definitions
+│       ├── evidence.ts        # Evidence requirements extraction
+│       ├── action-items.ts    # Compliance action items
+│       ├── breach-notification.ts  # Breach notification timelines
+│       ├── prompts.ts         # MCP Prompts (workflow templates)
+│       └── resources.ts       # MCP Resources (static context)
+├── data/
+│   ├── regulations.db         # Pre-built database
+│   └── seed/                  # Source JSON files
+│       ├── *.json             # Regulation seed data
+│       ├── breach-notification-rules.json
+│       ├── mappings/          # Control framework mappings
+│       └── applicability/     # Sector applicability rules
+├── scripts/                   # Build & ingestion scripts
+└── tests/
+    └── tools.test.ts          # Vitest test suite (38 tests)
 ```
 
 ## Regulations Included
@@ -89,19 +105,52 @@ US_Compliance_MCP/
 ## Available Tools
 
 ### 1. `search_regulations`
-Full-text search across all regulations
+Full-text search across all regulations using FTS5 with BM25 ranking. Supports regulation filtering, pagination (limit/offset), and returns diagnostics on empty results.
 
-### 2. `get_regulation`
-Retrieve specific regulation details
+### 2. `get_section`
+Retrieve a specific section by regulation ID and section number. Throws descriptive errors with available alternatives on not-found.
 
-### 3. `compare_requirements`
-Compare requirements across regulations
+### 3. `list_regulations`
+List all regulations (no params) or get the full structure of a specific regulation (chapters/sections tree).
 
-### 4. `check_applicability`
-Determine which regulations apply to a scenario
+### 4. `compare_requirements`
+Compare requirements across up to 10 regulations on a given topic. Returns per-regulation matches plus a synthesis with coverage summary.
 
-### 5. `get_breach_notification_timeline`
-State-by-state breach notification requirements
+### 5. `map_controls`
+Map regulation requirements to control frameworks (NIST 800-53, NIST CSF). Filter by regulation or control ID. Returns diagnostics for unknown frameworks.
+
+### 6. `check_applicability`
+Determine which regulations apply to a given industry sector/subsector. Returns diagnostics with available sectors on no match.
+
+### 7. `get_definitions`
+Look up legal term definitions across regulations. Supports partial matching and regulation filtering.
+
+### 8. `get_evidence_requirements`
+Extract audit evidence requirements from a regulation section. Uses 26 keyword patterns to identify evidence types and marks mandatory vs. recommended items.
+
+### 9. `get_compliance_action_items`
+Generate prioritized compliance action items from regulation sections. Extracts priority (high/medium/low) and evidence needs from section text.
+
+### 10. `get_breach_notification_timeline`
+Query breach notification deadlines across federal and state jurisdictions. Filter by state or regulation. Returns notification requirements, thresholds, and penalties.
+
+## MCP Prompts
+
+### 1. `compliance_assessment`
+Multi-step workflow for assessing which regulations apply to a given sector and generating action items.
+
+### 2. `regulation_comparison`
+Guided workflow for comparing requirements across multiple regulations on a specific topic.
+
+### 3. `breach_readiness_check`
+Structured workflow for evaluating breach notification readiness across applicable jurisdictions.
+
+## MCP Resources
+
+- `us-regulations://regulations/list` - All loaded regulations with IDs and metadata
+- `us-regulations://sectors/list` - Sector taxonomy for applicability checks
+- `us-regulations://frameworks/list` - Available control frameworks and their regulation mappings
+- `us-regulations://breach-notification/summary` - Breach notification jurisdictions overview
 
 ## Development
 
@@ -165,11 +214,11 @@ See [central architecture docs](https://github.com/Ansvar-Systems/security-contr
 # Run all tests
 npm test
 
-# With coverage
-npm run test:coverage
+# Watch mode
+npm run test:watch
 
 # Specific test file
-npm test -- tests/tools/search.test.ts
+npx vitest run tests/tools.test.ts
 ```
 
 ## Coding Guidelines
@@ -183,9 +232,11 @@ npm test -- tests/tools/search.test.ts
 ## Current Statistics
 
 - **Regulations**: 15 US federal & state laws
-- **Articles/Sections**: ~1,500 entries
-- **Database Size**: ~10MB
-- **Tests**: All passing
+- **Tools**: 10 MCP tools
+- **Prompts**: 3 MCP workflow prompts
+- **Resources**: 4 MCP static resources
+- **Tests**: 38 passing (Vitest)
+- **Transports**: stdio, HTTP/SSE, REST
 
 ## Support
 

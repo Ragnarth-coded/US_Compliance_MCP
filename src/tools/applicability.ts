@@ -20,6 +20,10 @@ export interface ApplicabilityResult {
   subsector: string | null;
   applicable_regulations: ApplicabilityRule[];
   total_applicable: number;
+  diagnostics?: {
+    sectors_available: string[];
+    hint?: string;
+  };
 }
 
 /**
@@ -81,6 +85,30 @@ export async function checkApplicability(
       basis_section: row.basis_section,
       notes: row.notes,
     }));
+
+  // If no results, provide diagnostics
+  if (applicableRules.length === 0) {
+    const sectors = db.prepare('SELECT DISTINCT sector FROM applicability_rules ORDER BY sector').all() as Array<{ sector: string }>;
+    const sectorIds = sectors.map(s => s.sector);
+
+    let hint: string | undefined;
+    if (!sectorIds.includes(sector)) {
+      hint = `Sector "${sector}" has no applicability rules. Sectors with rules: ${sectorIds.join(', ')}. Applicability data is being expanded — use search_regulations as a fallback.`;
+    } else if (subsector) {
+      hint = `No rules match subsector "${subsector}" in sector "${sector}". Try without subsector for broader results.`;
+    }
+
+    return {
+      sector,
+      subsector: subsector || null,
+      applicable_regulations: [],
+      total_applicable: 0,
+      diagnostics: {
+        sectors_available: sectorIds,
+        hint,
+      },
+    };
+  }
 
   return {
     sector,

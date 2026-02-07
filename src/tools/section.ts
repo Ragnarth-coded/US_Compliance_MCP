@@ -21,7 +21,7 @@ export interface SectionData {
 export async function getSection(
   db: Database,
   input: GetSectionInput
-): Promise<SectionData | null> {
+): Promise<SectionData> {
   const { regulation, section } = input;
 
   const sql = `
@@ -48,7 +48,17 @@ export async function getSection(
   } | undefined;
 
   if (!row) {
-    return null;
+    // Check if regulation exists at all
+    const regExists = db.prepare('SELECT 1 FROM regulations WHERE id = ?').get(regulation);
+    if (!regExists) {
+      const available = db.prepare('SELECT id FROM regulations ORDER BY id').all() as Array<{ id: string }>;
+      throw new Error(
+        `Regulation "${regulation}" not found. Available regulations: ${available.map(r => r.id).join(', ')}`
+      );
+    }
+    throw new Error(
+      `Section "${section}" not found in ${regulation}. Use list_regulations with regulation="${regulation}" to see available sections, or search_regulations to find content.`
+    );
   }
 
   // Token management: Truncate very large sections to prevent context overflow

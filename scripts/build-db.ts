@@ -114,6 +114,22 @@ CREATE TABLE IF NOT EXISTS applicability_rules (
   UNIQUE(regulation, sector, subsector)
 );
 
+-- Breach notification rules (state and federal)
+CREATE TABLE IF NOT EXISTS breach_notification_rules (
+  id INTEGER PRIMARY KEY,
+  jurisdiction TEXT NOT NULL,
+  regulation TEXT NOT NULL,
+  notification_deadline TEXT NOT NULL,
+  notify_individuals INTEGER NOT NULL DEFAULT 1,
+  notify_regulator INTEGER NOT NULL DEFAULT 1,
+  notify_media INTEGER NOT NULL DEFAULT 0,
+  regulator_name TEXT,
+  threshold TEXT,
+  penalties TEXT,
+  notes TEXT,
+  UNIQUE(jurisdiction, regulation)
+);
+
 -- Source registry for tracking data quality
 CREATE TABLE IF NOT EXISTS source_registry (
   regulation TEXT PRIMARY KEY REFERENCES regulations(id),
@@ -190,7 +206,7 @@ function buildDatabase() {
     const seedFiles = readdirSync(SEED_DIR).filter((f: string) => f.endsWith('.json'));
 
     for (const file of seedFiles) {
-      if (file.startsWith('mappings')) continue;
+      if (file.startsWith('mappings') || file.startsWith('breach-notification') || file.startsWith('applicability')) continue;
 
       console.log(`Loading ${file}...`);
       let seedData: RegulationSeed;

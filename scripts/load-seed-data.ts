@@ -8,7 +8,7 @@
  */
 
 import Database from 'better-sqlite3';
-import { readFileSync, readdirSync } from 'fs';
+import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -16,8 +16,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const DB_PATH = join(__dirname, '..', 'data', 'regulations.db');
-const MAPPINGS_DIR = join(__dirname, '..', 'data', 'seed', 'mappings');
-const APPLICABILITY_DIR = join(__dirname, '..', 'data', 'seed', 'applicability');
+const SEED_DIR = join(__dirname, '..', 'data', 'seed');
+const MAPPINGS_DIR = join(SEED_DIR, 'mappings');
+const APPLICABILITY_DIR = join(SEED_DIR, 'applicability');
+const BREACH_RULES_PATH = join(SEED_DIR, 'breach-notification-rules.json');
 
 interface Mapping {
   section_number: string;
@@ -42,6 +44,8 @@ interface ApplicabilityRule {
 console.log('🌱 Loading seed data into database...\n');
 
 const db = Database(DB_PATH);
+// Disable FK enforcement: seed data may reference regulations loaded via ingest script
+db.pragma('foreign_keys = OFF');
 
 // Load control mappings
 console.log('📊 Loading control mappings...');
@@ -125,9 +129,48 @@ for (const file of applicabilityFiles) {
 
 console.log(`✅ Loaded ${totalRules} applicability rules\n`);
 
+// Load breach notification rules
+let totalBreachRules = 0;
+
+if (existsSync(BREACH_RULES_PATH)) {
+  console.log('🔔 Loading breach notification rules...');
+  const breachData = JSON.parse(readFileSync(BREACH_RULES_PATH, 'utf-8'));
+
+  console.log(`  breach-notification-rules.json: ${breachData.rules.length} rules`);
+
+  const insertBreachRule = db.prepare(`
+    INSERT OR REPLACE INTO breach_notification_rules
+    (jurisdiction, regulation, notification_deadline, notify_individuals, notify_regulator, notify_media, regulator_name, threshold, penalties, notes)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `);
+
+  db.transaction(() => {
+    for (const rule of breachData.rules) {
+      insertBreachRule.run(
+        rule.jurisdiction,
+        rule.regulation,
+        rule.notification_deadline,
+        rule.notify_individuals ? 1 : 0,
+        rule.notify_regulator ? 1 : 0,
+        rule.notify_media ? 1 : 0,
+        rule.regulator_name || null,
+        rule.threshold || null,
+        rule.penalties || null,
+        rule.notes || null
+      );
+      totalBreachRules++;
+    }
+  })();
+
+  console.log(`✅ Loaded ${totalBreachRules} breach notification rules\n`);
+} else {
+  console.log('⚠️  No breach notification rules file found, skipping\n');
+}
+
 db.close();
 
 console.log('🎉 Seed data loading complete!');
 console.log(`\nSummary:`);
 console.log(`  Control mappings: ${totalMappings}`);
 console.log(`  Applicability rules: ${totalRules}`);
+console.log(`  Breach notification rules: ${totalBreachRules}`);

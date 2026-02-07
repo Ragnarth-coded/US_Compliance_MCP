@@ -108,13 +108,14 @@ export async function getComplianceActionItems(
   const actionItems: ActionItem[] = [];
 
   for (const sectionNumber of sections) {
-    const sectionData = await getSection(db, {
-      regulation,
-      section: sectionNumber,
-    });
-
-    if (!sectionData) {
-      console.warn(`Section ${sectionNumber} not found in ${regulation}, skipping`);
+    let sectionData;
+    try {
+      sectionData = await getSection(db, {
+        regulation,
+        section: sectionNumber,
+      });
+    } catch {
+      // Section not found - skip silently for batch operations
       continue;
     }
 

@@ -4,6 +4,7 @@ export interface SearchInput {
   query: string;
   regulations?: string[];
   limit?: number;
+  offset?: number;
 }
 
 export interface SearchResult {
@@ -12,6 +13,16 @@ export interface SearchResult {
   title: string;
   snippet: string;
   relevance: number;
+}
+
+export interface SearchResponse {
+  results: SearchResult[];
+  total_results: number;
+  query: string;
+  diagnostics?: {
+    available_regulations: string[];
+    hint?: string;
+  };
 }
 
 /**
@@ -56,8 +67,8 @@ function escapeFts5Query(query: string): string {
 export async function searchRegulations(
   db: Database,
   input: SearchInput
-): Promise<SearchResult[]> {
-  let { query, regulations, limit = 10 } = input;
+): Promise<SearchResponse> {
+  let { query, regulations, limit = 10, offset = 0 } = input;
 
   // Validate and sanitize limit parameter
   if (!Number.isFinite(limit) || limit < 0) {
@@ -66,6 +77,12 @@ export async function searchRegulations(
   // Cap at reasonable maximum
   limit = Math.min(Math.floor(limit), 1000);
 
+  // Validate and sanitize offset parameter
+  if (!Number.isFinite(offset) || offset < 0) {
+    offset = 0;
+  }
+  offset = Math.floor(offset);
+
   if (!query || query.trim().length === 0) {
     throw new Error('Query cannot be empty. Please provide a search term.');
   }
@@ -73,7 +90,16 @@ export async function searchRegulations(
   const escapedQuery = escapeFts5Query(query);
 
   if (!escapedQuery) {
-    return [];
+    const available = db.prepare('SELECT id FROM regulations ORDER BY id').all() as Array<{ id: string }>;
+    return {
+      results: [],
+      total_results: 0,
+      query,
+      diagnostics: {
+        available_regulations: available.map(r => r.id),
+        hint: 'Query contained only stopwords or special characters. Try more specific terms like "encryption", "breach notification", or "access control".',
+      },
+    };
   }
 
   const params: (string | number)[] = [escapedQuery];
@@ -98,12 +124,12 @@ export async function searchRegulations(
     WHERE sections_fts MATCH ?
     ${regulationFilter}
     ORDER BY bm25(sections_fts)
-    LIMIT ?
+    LIMIT ? OFFSET ?
   `;
 
   try {
     // Execute query
-    const sectionsParams = [...params, limit];
+    const sectionsParams = [...params, limit, offset];
 
     const sectionStmt = db.prepare(sectionsQuery);
 
@@ -121,11 +147,47 @@ export async function searchRegulations(
       relevance: Math.abs(row.relevance),
     }));
 
-    return results;
+    // If no results, provide diagnostics to help the agent self-correct
+    if (results.length === 0) {
+      const available = db.prepare('SELECT id FROM regulations ORDER BY id').all() as Array<{ id: string }>;
+      const availableIds = available.map(r => r.id);
+
+      let hint: string | undefined;
+      if (regulations && regulations.length > 0) {
+        const invalid = regulations.filter(r => !availableIds.includes(r));
+        if (invalid.length > 0) {
+          hint = `Unknown regulation(s): ${invalid.join(', ')}. Try without the regulations filter, or use list_regulations to see valid IDs.`;
+        } else {
+          hint = 'No matches found in the specified regulations. Try broadening your query or removing the regulation filter.';
+        }
+      } else {
+        hint = 'No matches found. Try simpler or alternative terms.';
+      }
+
+      return {
+        results: [],
+        total_results: 0,
+        query,
+        diagnostics: {
+          available_regulations: availableIds,
+          hint,
+        },
+      };
+    }
+
+    return { results, total_results: results.length, query };
   } catch (error) {
-    // If FTS5 query fails (e.g., syntax error), return empty results
+    // If FTS5 query fails (e.g., syntax error), return empty results with diagnostics
     if (error instanceof Error && error.message.includes('fts5')) {
-      return [];
+      return {
+        results: [],
+        total_results: 0,
+        query,
+        diagnostics: {
+          available_regulations: [],
+          hint: `Search query syntax error. Try simpler terms without special characters.`,
+        },
+      };
     }
     throw error;
   }

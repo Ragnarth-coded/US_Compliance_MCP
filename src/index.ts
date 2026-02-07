@@ -2,15 +2,13 @@
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-} from '@modelcontextprotocol/sdk/types.js';
 import Database from 'better-sqlite3';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 import { registerTools } from './tools/registry.js';
+import { registerPrompts } from './tools/prompts.js';
+import { registerResources } from './tools/resources.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -30,17 +28,21 @@ const db = getDatabase();
 const server = new Server(
   {
     name: 'us-regulations-mcp',
-    version: '1.1.0',
+    version: '1.2.5',
   },
   {
     capabilities: {
       tools: {},
+      prompts: {},
+      resources: {},
     },
   }
 );
 
-// Register all tools using shared registry
+// Register all tools, prompts, and resources
 registerTools(server, db);
+registerPrompts(server);
+registerResources(server, db);
 
 // Start the server
 async function main() {

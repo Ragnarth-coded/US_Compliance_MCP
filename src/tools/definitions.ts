@@ -16,6 +16,10 @@ export interface DefinitionsResult {
   term: string;
   definitions: Definition[];
   total_definitions: number;
+  diagnostics?: {
+    regulations_with_definitions: string[];
+    hint?: string;
+  };
 }
 
 function escapeSqlLike(str: string): string {
@@ -71,6 +75,31 @@ export async function getDefinitions(
     definition: row.definition,
     section: row.section,
   }));
+
+  // If no results, provide diagnostics
+  if (definitions.length === 0) {
+    const regsWithDefs = db.prepare('SELECT DISTINCT regulation FROM definitions ORDER BY regulation').all() as Array<{ regulation: string }>;
+    const regIds = regsWithDefs.map(r => r.regulation);
+
+    let hint: string | undefined;
+    if (regulation && !regIds.includes(regulation)) {
+      hint = `Regulation "${regulation}" has no definitions loaded. Regulations with definitions: ${regIds.join(', ') || 'none yet'}. Try search_regulations to find the term in section text instead.`;
+    } else if (regIds.length === 0) {
+      hint = 'No definitions are loaded yet. Use search_regulations to find terms in regulation text.';
+    } else {
+      hint = `No definitions match "${term}". Try a shorter or more general term, or use search_regulations to find it in section text.`;
+    }
+
+    return {
+      term,
+      definitions: [],
+      total_definitions: 0,
+      diagnostics: {
+        regulations_with_definitions: regIds,
+        hint,
+      },
+    };
+  }
 
   return {
     term,
