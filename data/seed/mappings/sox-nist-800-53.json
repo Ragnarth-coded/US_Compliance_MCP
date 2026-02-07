@@ -1,0 +1,139 @@
+{
+  "framework": "NIST_800_53_R5",
+  "regulation": "SOX",
+  "generated_at": "2026-02-07",
+  "description": "Mapping of SOX Section 404 IT controls to NIST 800-53 Rev 5",
+  "source": {
+    "disclaimer": "These mappings are interpretive guidance for IT compliance research. They are NOT official SEC or NIST crosswalks. For authoritative guidance, consult your auditors, legal counsel, and SOX compliance specialists. SOX Section 404 focuses on internal controls over financial reporting (ICFR), with IT general controls (ITGCs) as a critical component.",
+    "references": [
+      "SOX Section 404 - Management Assessment of Internal Controls",
+      "NIST SP 800-53 Rev 5 - Security and Privacy Controls",
+      "COSO Internal Control Framework",
+      "PCAOB Auditing Standards"
+    ],
+    "methodology": "Mappings focus on IT General Controls (ITGCs) that support SOX compliance: access controls, change management, computer operations, and data integrity.",
+    "last_reviewed": "2026-02-07"
+  },
+  "mappings": [
+    {
+      "section_number": "SOX-404",
+      "control_id": "AC-2",
+      "control_name": "Account Management",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "SOX requires proper access controls to financial systems - account management is critical ITGC"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "AC-3",
+      "control_name": "Access Enforcement",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "Segregation of duties and least privilege for financial reporting systems"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "AC-6",
+      "control_name": "Least Privilege",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "Prevent unauthorized changes to financial data and reports"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "AU-2",
+      "control_name": "Event Logging",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "SOX requires audit trails for all financial system activities"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "AU-3",
+      "control_name": "Content of Audit Records",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "Audit logs must capture who, what, when for financial transactions"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "AU-6",
+      "control_name": "Audit Record Review, Analysis, and Reporting",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "Regular review of audit logs to detect anomalies in financial systems"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "AU-9",
+      "control_name": "Protection of Audit Information",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "SOX audit trails must be tamper-proof and retained"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "CM-3",
+      "control_name": "Configuration Change Control",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "Change management is critical ITGC - all changes to financial systems must be controlled"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "CM-4",
+      "control_name": "Impact Analysis",
+      "coverage": "partial",
+      "confidence": 85,
+      "rationale": "Changes to financial systems require impact assessment"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "CP-9",
+      "control_name": "System Backup",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "Financial data backup and recovery required for business continuity"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "SC-8",
+      "control_name": "Transmission Confidentiality and Integrity",
+      "coverage": "partial",
+      "confidence": 80,
+      "rationale": "Protect financial data in transit"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "SI-2",
+      "control_name": "Flaw Remediation",
+      "coverage": "partial",
+      "confidence": 80,
+      "rationale": "Patch management for financial systems"
+    },
+    {
+      "section_number": "SOX-404",
+      "control_id": "SI-10",
+      "control_name": "Information Input Validation",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "Validate financial data inputs to prevent errors and fraud"
+    },
+    {
+      "section_number": "SOX-802",
+      "control_id": "AU-11",
+      "control_name": "Audit Record Retention",
+      "coverage": "full",
+      "confidence": 98,
+      "rationale": "SOX 802 criminalizes destruction of audit records - retention critical"
+    },
+    {
+      "section_number": "17-CFR-240.13a-15",
+      "control_id": "PM-9",
+      "control_name": "Risk Management Strategy",
+      "coverage": "partial",
+      "confidence": 85,
+      "rationale": "SEC Rule 13a-15 requires risk-based approach to internal controls"
+    }
+  ]
+}

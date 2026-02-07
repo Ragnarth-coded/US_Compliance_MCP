@@ -1,0 +1,122 @@
+{
+  "framework": "NIST_800_53_R5",
+  "regulation": "GLBA",
+  "generated_at": "2026-02-07",
+  "description": "Mapping of GLBA Safeguards Rule to NIST 800-53 Rev 5",
+  "source": {
+    "disclaimer": "These mappings are interpretive guidance for compliance research. They are NOT official FTC or NIST crosswalks. Financial institutions should consult their primary federal regulator (OCC, FDIC, Federal Reserve, NCUA, SEC) and legal counsel for authoritative guidance.",
+    "references": [
+      "16 CFR Part 314 - FTC Safeguards Rule",
+      "NIST SP 800-53 Rev 5 - Security and Privacy Controls",
+      "FTC Safeguards Rule Compliance Guide"
+    ],
+    "methodology": "Mappings based on GLBA Safeguards Rule elements (314.4) and alignment with NIST 800-53 control families. GLBA focuses on protecting customer information confidentiality, integrity, and availability.",
+    "last_reviewed": "2026-02-07"
+  },
+  "mappings": [
+    {
+      "section_number": "314.4(a)",
+      "control_id": "PL-2",
+      "control_name": "System Security and Privacy Plans",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "GLBA requires designated qualified individual to oversee information security program"
+    },
+    {
+      "section_number": "314.4(b)",
+      "control_id": "RA-3",
+      "control_name": "Risk Assessment",
+      "coverage": "full",
+      "confidence": 98,
+      "rationale": "GLBA explicitly requires risk assessment of customer information systems"
+    },
+    {
+      "section_number": "314.4(c)(2)",
+      "control_id": "IA-2",
+      "control_name": "Identification and Authentication",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "GLBA requires multi-factor authentication for information systems access"
+    },
+    {
+      "section_number": "314.4(c)(2)",
+      "control_id": "IA-5",
+      "control_name": "Authenticator Management",
+      "coverage": "partial",
+      "confidence": 85,
+      "rationale": "Supports MFA implementation requirement"
+    },
+    {
+      "section_number": "314.4(c)(3)",
+      "control_id": "MP-6",
+      "control_name": "Media Sanitization",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "GLBA requires secure disposal of customer information"
+    },
+    {
+      "section_number": "314.4(c)(4)",
+      "control_id": "SC-7",
+      "control_name": "Boundary Protection",
+      "coverage": "partial",
+      "confidence": 80,
+      "rationale": "Secure and resilient customer information systems"
+    },
+    {
+      "section_number": "314.4(c)(5)(i)",
+      "control_id": "AU-6",
+      "control_name": "Audit Record Review",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "GLBA requires continuous monitoring and logging"
+    },
+    {
+      "section_number": "314.4(c)(5)(ii)",
+      "control_id": "CA-8",
+      "control_name": "Penetration Testing",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "GLBA requires annual penetration testing or vulnerability assessments"
+    },
+    {
+      "section_number": "314.4(c)(5)(ii)",
+      "control_id": "RA-5",
+      "control_name": "Vulnerability Monitoring and Scanning",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "Annual testing requirement includes vulnerability assessments"
+    },
+    {
+      "section_number": "314.4(c)(6)",
+      "control_id": "IR-4",
+      "control_name": "Incident Handling",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "GLBA requires procedures for detecting and responding to security events"
+    },
+    {
+      "section_number": "314.4(c)(7)",
+      "control_id": "IR-8",
+      "control_name": "Incident Response Plan",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "GLBA requires response program for security events affecting customer information"
+    },
+    {
+      "section_number": "314.4(d)",
+      "control_id": "SA-9",
+      "control_name": "External System Services",
+      "coverage": "full",
+      "confidence": 95,
+      "rationale": "GLBA requires due diligence and oversight of service providers"
+    },
+    {
+      "section_number": "314.4(f)",
+      "control_id": "CA-7",
+      "control_name": "Continuous Monitoring",
+      "coverage": "partial",
+      "confidence": 85,
+      "rationale": "Annual reporting to Board on security program status"
+    }
+  ]
+}

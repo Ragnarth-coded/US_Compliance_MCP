@@ -1,0 +1,119 @@
+{
+  "framework": "NIST_CSF",
+  "regulation": "STATE_PRIVACY_LAWS",
+  "generated_at": "2026-02-07",
+  "description": "Generic mapping of US state privacy laws (CCPA, VCDPA, CTDPA, UCPA, CPA) to NIST Cybersecurity Framework",
+  "source": {
+    "disclaimer": "These mappings provide general guidance for state privacy law compliance using NIST CSF. Individual state laws have variations. Organizations should consult state-specific requirements and legal counsel. This mapping applies to: California CCPA/CPRA, Virginia VCDPA, Connecticut CTDPA, Utah UCPA, Colorado CPA.",
+    "references": [
+      "NIST Cybersecurity Framework v1.1",
+      "State Comprehensive Privacy Law Comparison (IAPP)",
+      "California CCPA/CPRA",
+      "Virginia VCDPA",
+      "Connecticut CTDPA",
+      "Utah UCPA",
+      "Colorado CPA"
+    ],
+    "methodology": "Mappings based on common privacy law requirements: consumer rights, data protection, transparency, accountability. Focuses on technical and organizational measures to support compliance.",
+    "last_reviewed": "2026-02-07",
+    "note": "This is a generic mapping applicable to multiple state privacy laws. For regulation-specific mappings, use individual regulation IDs (CCPA, VCDPA, etc.)"
+  },
+  "mappings": [
+    {
+      "section_number": "consumer-rights-access",
+      "control_id": "ID.AM-5",
+      "control_name": "Resources are prioritized based on classification, criticality, and business value",
+      "coverage": "partial",
+      "confidence": 75,
+      "rationale": "Data classification supports right to know / access requests"
+    },
+    {
+      "section_number": "consumer-rights-deletion",
+      "control_id": "PR.IP-6",
+      "control_name": "Data is destroyed according to policy",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "Supports right to delete/erasure requirements"
+    },
+    {
+      "section_number": "data-minimization",
+      "control_id": "ID.BE-3",
+      "control_name": "Priorities for organizational mission, objectives, and activities are established and communicated",
+      "coverage": "partial",
+      "confidence": 70,
+      "rationale": "Collect only adequate, relevant, and necessary data"
+    },
+    {
+      "section_number": "security-safeguards",
+      "control_id": "PR.AC-1",
+      "control_name": "Identities and credentials are issued, managed, verified, revoked, and audited",
+      "coverage": "full",
+      "confidence": 85,
+      "rationale": "Security practices to protect personal data"
+    },
+    {
+      "section_number": "security-safeguards",
+      "control_id": "PR.DS-1",
+      "control_name": "Data-at-rest is protected",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "Reasonable security practices requirement"
+    },
+    {
+      "section_number": "security-safeguards",
+      "control_id": "PR.DS-2",
+      "control_name": "Data-in-transit is protected",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "Protect personal data during transmission"
+    },
+    {
+      "section_number": "breach-notification",
+      "control_id": "DE.AE-2",
+      "control_name": "Detected events are analyzed to understand attack targets and methods",
+      "coverage": "partial",
+      "confidence": 75,
+      "rationale": "Supports breach detection and assessment"
+    },
+    {
+      "section_number": "breach-notification",
+      "control_id": "RS.CO-2",
+      "control_name": "Incidents are reported consistent with established criteria",
+      "coverage": "full",
+      "confidence": 90,
+      "rationale": "CCPA private right of action for data breaches"
+    },
+    {
+      "section_number": "vendor-management",
+      "control_id": "ID.SC-2",
+      "control_name": "Suppliers and third-party partners are identified, prioritized, and assessed",
+      "coverage": "full",
+      "confidence": 85,
+      "rationale": "Processor/service provider contracts and oversight"
+    },
+    {
+      "section_number": "privacy-by-design",
+      "control_id": "ID.RA-1",
+      "control_name": "Asset vulnerabilities are identified and documented",
+      "coverage": "partial",
+      "confidence": 70,
+      "rationale": "Data protection assessments for high-risk processing"
+    },
+    {
+      "section_number": "consumer-rights-portability",
+      "control_id": "PR.PT-2",
+      "control_name": "Removable media is protected and its use restricted",
+      "coverage": "related",
+      "confidence": 60,
+      "rationale": "Tangentially related to data portability (obtaining copy in usable format)"
+    },
+    {
+      "section_number": "transparency",
+      "control_id": "PR.IP-11",
+      "control_name": "Cybersecurity is included in human resources practices",
+      "coverage": "related",
+      "confidence": 65,
+      "rationale": "Privacy notice and transparency requirements - staff training"
+    }
+  ]
+}
