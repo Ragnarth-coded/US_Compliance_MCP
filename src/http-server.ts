@@ -10,7 +10,7 @@
 import { createServer } from 'node:http';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
-import Database from 'better-sqlite3';
+import Database from '@ansvar/mcp-sqlite';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { randomUUID } from 'crypto';
@@ -26,9 +26,9 @@ const DB_PATH = process.env.US_COMPLIANCE_DB_PATH || join(__dirname, '..', 'data
 // HTTP server port
 const PORT = parseInt(process.env.PORT || '3000', 10);
 
-let db: Database.Database;
+let db: InstanceType<typeof Database>;
 
-function getDatabase(): Database.Database {
+function getDatabase(): InstanceType<typeof Database> {
   if (!db) {
     try {
       db = new Database(DB_PATH, { readonly: true });

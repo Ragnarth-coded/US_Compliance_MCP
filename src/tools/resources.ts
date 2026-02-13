@@ -3,13 +3,13 @@ import {
   ListResourcesRequestSchema,
   ReadResourceRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-import Database from 'better-sqlite3';
+import Database from '@ansvar/mcp-sqlite';
 
 /**
  * Register MCP Resources with the server.
  * Resources provide static context that agents can read before making tool calls.
  */
-export function registerResources(server: Server, db: Database.Database): void {
+export function registerResources(server: Server, db: InstanceType<typeof Database>): void {
   server.setRequestHandler(ListResourcesRequestSchema, async () => ({
     resources: [
       {

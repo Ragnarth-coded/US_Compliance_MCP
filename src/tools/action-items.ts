@@ -1,4 +1,4 @@
-import type { Database } from 'better-sqlite3';
+import type { Database } from '@ansvar/mcp-sqlite';
 import { getSection, SectionData } from './section.js';
 
 export interface ActionItemsInput {

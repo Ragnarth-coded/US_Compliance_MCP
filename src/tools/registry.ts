@@ -3,7 +3,7 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-import Database from 'better-sqlite3';
+import Database from '@ansvar/mcp-sqlite';
 import { searchRegulations, SearchInput } from './search.js';
 import { getSection, GetSectionInput } from './section.js';
 import { listRegulations, ListInput } from './list.js';
@@ -19,7 +19,7 @@ export interface ToolDefinition {
   name: string;
   description: string;
   inputSchema: any;
-  handler: (db: Database.Database, args: any) => Promise<any>;
+  handler: (db: InstanceType<typeof Database>, args: any) => Promise<any>;
 }
 
 /**
@@ -55,7 +55,7 @@ export const TOOLS: ToolDefinition[] = [
       },
       required: ['query'],
     },
-    handler: async (db: Database.Database, args: any) => {
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await searchRegulations(db, args as SearchInput);
     },
   },
@@ -76,7 +76,7 @@ export const TOOLS: ToolDefinition[] = [
       },
       required: ['regulation', 'section'],
     },
-    handler: async (db: Database.Database, args: any) => {
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await getSection(db, args as GetSectionInput);
     },
   },
@@ -92,7 +92,7 @@ export const TOOLS: ToolDefinition[] = [
         },
       },
     },
-    handler: async (db: Database.Database, args: any) => {
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await listRegulations(db, args as ListInput);
     },
   },
@@ -114,7 +114,7 @@ export const TOOLS: ToolDefinition[] = [
       },
       required: ['topic', 'regulations'],
     },
-    handler: async (db: Database.Database, args: any) => {
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await compareRequirements(db, args as CompareInput);
     },
   },
@@ -139,7 +139,7 @@ export const TOOLS: ToolDefinition[] = [
       },
       required: ['framework'],
     },
-    handler: async (db: Database.Database, args: any) => {
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await mapControls(db, args as MapControlsInput);
     },
   },
@@ -160,7 +160,7 @@ export const TOOLS: ToolDefinition[] = [
       },
       required: ['sector'],
     },
-    handler: async (db: Database.Database, args: any) => {
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await checkApplicability(db, args as ApplicabilityInput);
     },
   },
@@ -181,7 +181,7 @@ export const TOOLS: ToolDefinition[] = [
       },
       required: ['term'],
     },
-    handler: async (db: Database.Database, args: any) => {
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await getDefinitions(db, args as DefinitionsInput);
     },
   },
@@ -202,7 +202,7 @@ export const TOOLS: ToolDefinition[] = [
       },
       required: ['regulation', 'section'],
     },
-    handler: async (db: Database.Database, args: any) => {
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await getEvidenceRequirements(db, args as EvidenceInput);
     },
   },
@@ -224,7 +224,7 @@ export const TOOLS: ToolDefinition[] = [
       },
       required: ['regulation', 'sections'],
     },
-    handler: async (db: Database.Database, args: any) => {
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await getComplianceActionItems(db, args as ActionItemsInput);
     },
   },
@@ -244,7 +244,7 @@ export const TOOLS: ToolDefinition[] = [
         },
       },
     },
-    handler: async (db: Database.Database, args: any) => {
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await getBreachNotificationTimeline(db, args as BreachNotificationInput);
     },
   },
@@ -254,7 +254,7 @@ export const TOOLS: ToolDefinition[] = [
  * Register all tools with an MCP server instance.
  * Use this for both stdio and HTTP servers to ensure parity.
  */
-export function registerTools(server: Server, db: Database.Database): void {
+export function registerTools(server: Server, db: InstanceType<typeof Database>): void {
   // List available tools
   server.setRequestHandler(ListToolsRequestSchema, async () => ({
     tools: TOOLS.map(tool => ({

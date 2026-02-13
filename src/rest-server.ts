@@ -9,7 +9,7 @@
 
 import express from 'express';
 import cors from 'cors';
-import Database from 'better-sqlite3';
+import Database from '@ansvar/mcp-sqlite';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -24,9 +24,9 @@ const __dirname = dirname(__filename);
 const DB_PATH = process.env.US_COMPLIANCE_DB_PATH || join(__dirname, '..', 'data', 'regulations.db');
 const PORT = parseInt(process.env.PORT || '3000', 10);
 
-let db: Database.Database;
+let db: InstanceType<typeof Database>;
 
-function getDatabase(): Database.Database {
+function getDatabase(): InstanceType<typeof Database> {
   if (!db) {
     db = new Database(DB_PATH, { readonly: true });
   }
