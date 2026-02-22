@@ -1,23 +1,24 @@
 # US Regulations MCP Server
-# Multi-stage build — uses @ansvar/mcp-sqlite (WASM, no native modules)
+# Multi-stage build — build:db needs better-sqlite3 (native) via tsx
 
 # Build stage
 FROM node:24-alpine AS builder
+RUN apk add --no-cache python3 make g++
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm ci --ignore-scripts
+RUN npm ci
 
 COPY src/ ./src/
 COPY tsconfig.json ./
 RUN npx tsc
 
-# Build database from seed data
+# Build database from seed data (uses better-sqlite3 via tsx)
 COPY scripts/ ./scripts/
 COPY data/seed/ ./data/seed/
 RUN npm run build:db
 
-# Production stage
+# Production stage — runtime uses @ansvar/mcp-sqlite (WASM, no native modules)
 FROM node:24-alpine AS production
 WORKDIR /app
 
