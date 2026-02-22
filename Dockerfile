@@ -22,7 +22,7 @@ FROM node:24-alpine AS production
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev && npm cache clean --force
+RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
 
 RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
 
