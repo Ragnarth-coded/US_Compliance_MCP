@@ -6,11 +6,11 @@ FROM node:24-alpine AS builder
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci --ignore-scripts
 
 COPY src/ ./src/
 COPY tsconfig.json ./
-RUN npm run build
+RUN npx tsc
 
 # Build database from seed data
 COPY scripts/ ./scripts/
