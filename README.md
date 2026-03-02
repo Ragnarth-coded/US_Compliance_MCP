@@ -463,6 +463,18 @@ The server provides 9 MCP tools:
 
 ## Development
 
+### Branching Strategy
+
+This repository uses a `dev` integration branch. **Do not push directly to `main`.**
+
+```
+feature-branch → PR to dev → verify on dev → PR to main → deploy
+```
+
+- `main` is production-ready. Only receives merges from `dev` via PR.
+- `dev` is the integration branch. All changes land here first.
+- Feature branches are created from `dev`.
+
 ### Prerequisites
 
 - Node.js 18 or higher

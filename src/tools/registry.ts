@@ -14,6 +14,14 @@ import { getEvidenceRequirements, EvidenceInput } from './evidence.js';
 import { getComplianceActionItems, ActionItemsInput } from './action-items.js';
 import { getBreachNotificationTimeline, BreachNotificationInput } from './breach-notification.js';
 import { getAbout, type AboutContext } from './about.js';
+import {
+  getSectionHistory,
+  diffSection,
+  getRecentChanges,
+  type GetSectionHistoryInput,
+  type DiffSectionInput,
+  type GetRecentChangesInput,
+} from './version-tracking.js';
 
 export interface ToolDefinition {
   name: string;
@@ -264,6 +272,91 @@ export const TOOLS: ToolDefinition[] = [
     },
     handler: async (db: InstanceType<typeof Database>, args: any) => {
       return await getBreachNotificationTimeline(db, args as BreachNotificationInput);
+    },
+  },
+  // --- Premium tools: version tracking ---
+  {
+    name: 'get_section_history',
+    description:
+      'Get the full version timeline for a specific regulation section, showing all amendments with dates and change summaries. ' +
+      'Premium feature — requires Ansvar Intelligence Portal.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        regulation: {
+          type: 'string',
+          description: 'Regulation ID (e.g., "HIPAA", "CCPA", "SOX"). Use list_regulations to see valid IDs.',
+        },
+        section: {
+          type: 'string',
+          description: 'Section number (e.g., "164.502", "1798.100").',
+        },
+      },
+      required: ['regulation', 'section'],
+    },
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
+      return await getSectionHistory(db, args as GetSectionHistoryInput);
+    },
+  },
+  {
+    name: 'diff_section',
+    description:
+      'Show what changed in a specific regulation section between two dates, including a unified diff and change summary. ' +
+      'Premium feature — requires Ansvar Intelligence Portal.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        regulation: {
+          type: 'string',
+          description: 'Regulation ID (e.g., "HIPAA", "CCPA").',
+        },
+        section: {
+          type: 'string',
+          description: 'Section number (e.g., "164.502", "1798.100").',
+        },
+        from_date: {
+          type: 'string',
+          description: 'ISO date to diff from (e.g., "2024-01-01").',
+        },
+        to_date: {
+          type: 'string',
+          description: 'ISO date to diff to (defaults to current). E.g., "2025-12-31".',
+        },
+      },
+      required: ['regulation', 'section', 'from_date'],
+    },
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
+      return await diffSection(db, args as DiffSectionInput);
+    },
+  },
+  {
+    name: 'get_recent_changes',
+    description:
+      'List all regulation sections that changed since a given date, with change summaries. Optionally filter to a specific regulation. ' +
+      'Premium feature — requires Ansvar Intelligence Portal.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        since: {
+          type: 'string',
+          description: 'ISO date (e.g., "2024-06-01").',
+        },
+        regulation: {
+          type: 'string',
+          description: 'Filter to a specific regulation (e.g., "HIPAA"). Omit for all.',
+        },
+        limit: {
+          type: 'integer',
+          description: 'Maximum changes to return. Default: 50, max: 200.',
+          default: 50,
+          minimum: 1,
+          maximum: 200,
+        },
+      },
+      required: ['since'],
+    },
+    handler: async (db: InstanceType<typeof Database>, args: any) => {
+      return await getRecentChanges(db, args as GetRecentChangesInput);
     },
   },
 ];

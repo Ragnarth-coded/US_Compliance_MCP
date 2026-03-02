@@ -1,0 +1,79 @@
+# US Regulations MCP Server — Premium Tier
+# Adds version tracking tools (get_section_history, diff_section, get_recent_changes)
+# Includes section_versions data baked in
+#
+# Build: docker buildx build --platform linux/amd64 -f Dockerfile.premium -t ghcr.io/ansvar-systems/us-regulations-mcp-premium:latest .
+# Run:   docker run -p 3000:3000 ghcr.io/ansvar-systems/us-regulations-mcp-premium:latest
+
+# Build stage
+FROM --platform=linux/amd64 node:24-alpine AS builder
+
+# Install build tools for native modules
+RUN apk add --no-cache python3 make g++
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm ci --ignore-scripts
+
+# Rebuild better-sqlite3 for this platform
+RUN cd node_modules/better-sqlite3 && npm run build-release
+
+# Copy source code
+COPY src/ ./src/
+COPY tsconfig.json ./
+
+# Build TypeScript
+RUN npm run build
+
+# Production stage
+FROM --platform=linux/amd64 node:24-alpine AS production
+
+# Install build tools for native modules (better-sqlite3) and curl for healthcheck
+RUN apk add --no-cache python3 make g++ curl
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json ./
+
+# Copy built artifacts BEFORE install
+COPY --from=builder /app/dist ./dist
+
+# Install production dependencies only
+RUN npm ci --omit=dev --ignore-scripts
+
+# Rebuild better-sqlite3 for this platform
+RUN cd node_modules/better-sqlite3 && npm run build-release
+
+# Clean up build tools (keep curl for health checks)
+RUN apk del python3 make g++ && \
+    npm cache clean --force
+
+# Security: create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001
+
+# Copy pre-built database (with section_versions table populated)
+COPY data/regulations.db ./data/regulations.db
+
+# Set ownership
+RUN chown -R nodejs:nodejs /app
+
+USER nodejs
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV PREMIUM_ENABLED=true
+
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3000/health || exit 1
+
+# Start HTTP server
+CMD ["node", "dist/http-server.js"]

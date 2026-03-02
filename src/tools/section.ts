@@ -24,6 +24,14 @@ export async function getSection(
 ): Promise<SectionData> {
   const { regulation, section } = input;
 
+  // Guard against missing required parameters to prevent SQLite binding errors
+  if (!regulation) {
+    throw new Error('Missing required parameter: regulation. Call list_regulations to see available regulation IDs.');
+  }
+  if (!section) {
+    throw new Error('Missing required parameter: section. Call list_regulations with a regulation ID to see available sections.');
+  }
+
   const sql = `
     SELECT
       regulation,
